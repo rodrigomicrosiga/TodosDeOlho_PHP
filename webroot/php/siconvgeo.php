@@ -31,7 +31,7 @@ function ConsultaMUN(cCod,cUF)
 }
 function Voltar()
 {
-	window.open("/siconvuf.php","_self");
+	window.open("/php/siconvuf.php","_self");
 }
 </script>
 </head>

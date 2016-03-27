@@ -25,16 +25,16 @@ a, select, input {
 <script type = 'text/javascript'>
 function Voltar()
 {
-	window.open("/siconvmun.php?UF=<%=cUf%>","_self");
+	window.open("/php/siconvmun.php?UF=<%=cUf%>","_self");
 }
 function Propostas()
 {
-	window.open("/siconv02.php?MUN=<%=cIDMun%>","_self");
+	window.open("/php/siconv02.php?MUN=<%=cIDMun%>","_self");
 }
 function Conveniados()
 {   
   alert('*** Em Construção ***');
-	//window.open("/siconv06.php?MUN=<%=cIDMun%>","_self");
+	//window.open("/php/siconv06.php?MUN=<%=cIDMun%>","_self");
 }
 function Home()
 {

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -36,10 +35,8 @@ function Home()
 </head>
 <body>
 <?php require_once('ptitle.php'); ?>
-<h3><%=cErrorMSG%></h3>
-<% If !empty(cErrorHLP) %>
-<p><%=cErrorHLP%></p>
-<% Endif %>
+<h3><?php echo $cErrorMSG ?></h3>
+<p><?php echo $cErrorHLP ?></hp>
 <p><input type="button" value="Voltar" onclick="javascript:Voltar()"></p>
 <p><input type="button" value="Retornar ao Início" onclick="javascript:Home()"></p>
 <p>Para reportar um erro, envie um email ao Administrador do Site, usando a opção abaixo:</p>

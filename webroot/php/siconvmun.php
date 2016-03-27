@@ -1,11 +1,27 @@
-<%
-Local nI
-%>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<?php require_once('headmetas.php'); ?>
+<?php 
+
+require_once('headmetas.php'); 
+require_once('dbconn.php'); 
+
+// -------------------------------------------------------
+// Pesquisa dos municípios dentro de um estado
+// -------------------------------------------------------
+
+if (!isset($_GET['UF'])) 
+{
+	$cErrorMSG = "Estado (UF) não informado.";
+	$cErrorHLP = 'A busca por municípios não recebeu corretamente o estado a ser pesquisado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+    require 'sicerror.php';
+	return;	
+}
+
+$cUF = filter_input(INPUT_GET, 'UF');
+
+?>
 <style>
 input, textarea {
   max-width:100%;
@@ -41,7 +57,7 @@ function SelectLastMUN()
 }
 function Voltar()
 {
-	window.open("/siconvuf.php","_self");
+	window.open("/php/siconvuf.php","_self");
 }
 function ConsultaMUN(cCod) 
 {
@@ -97,9 +113,22 @@ onkeyup="javascript:FilterMun(this,MUN)"
 autofocus></p>
 <p>
 <select id="MUN" name="MUN">
-<% For nI := 1 to len(aMunicipios) %>
-<option value="<%=aMunicipios[nI][1]%>"><%=aMunicipios[nI][2]%></option>
-<% next %>
+<?php 
+$conn = MySQLConnect();
+
+$stmt = mysqli_prepare($conn, "Select CODIGO,NOME,UF from MUNICIP where UF = ? ORDER BY UF,NOME");
+mysqli_stmt_bind_param($stmt,'s',$cUF);
+
+if (mysqli_stmt_execute ( $stmt ))
+{
+	mysqli_stmt_bind_result ( $stmt , $dbCODIGO , $dbNOME , $dbUF );
+	while (mysqli_stmt_fetch($stmt))
+    {
+		echo '<option value="' . $dbCODIGO . '">' . $dbNOME . '</option>\n';
+    }
+}
+MySQLDisconnect( $conn );
+?>
 </select>
 </p>
 <p>

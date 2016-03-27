@@ -45,11 +45,11 @@ select, input {
 <script type = 'text/javascript'>
 function Propostas(cCod)
 {
-	window.open("/siconv03.php?MUN=<%=cMunID%>&CCD="+cCod+"&PAGE=1&ORD=D","_self");
+	window.open("/php/siconv03.php?MUN=<%=cMunID%>&CCD="+cCod+"&PAGE=1&ORD=D","_self");
 }
 function Voltar()
 {
-	window.open("/siconvmun.php?UF=<%=cUf%>","_self");
+	window.open("/php/siconvmun.php?UF=<%=cUf%>","_self");
 }
 function Home()
 {

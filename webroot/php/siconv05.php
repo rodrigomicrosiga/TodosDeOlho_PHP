@@ -111,19 +111,19 @@ Dados do Convênio <%=cIDCNV%>
 <td>Situação da Proposta</td>
 <td id="tdgray">
 <% If ("CANCELADO"$QRYCONV->TXSIT)%>
-<img src="/images/LogoCancel.png" title="Cancelado">&nbsp;
+<img src="/images/logocancel.png" title="Cancelado">&nbsp;
 <% Endif %>
 <% If ("APROVADO"$QRYCONV->TXSIT)%>
-<img src="/images/LogoOK.png" title="Aprovado">&nbsp;
+<img src="/images/logook.png" title="Aprovado">&nbsp;
 <% Endif %>
 <% If ("REJEITADO"$QRYCONV->TXSIT)%>
-<img src="/images/LogoRejeitado.png" title="Rejeitado">&nbsp;
+<img src="/images/logorejeitado.png" title="Rejeitado">&nbsp;
 <% Endif %>
 <% If ("ANÁLISE"$QRYCONV->TXSIT)%>
-<img src="/images/LogoAnalize.png" title="Em Análise">&nbsp;
+<img src="/images/logoanalize.png" title="Em Análise">&nbsp;
 <% Endif %>
 <% If ("EXECUÇÃO"$QRYCONV->TXSIT)%>
-<img src="/images/LogoEmExec.png" title="Em Execução">&nbsp;
+<img src="/images/logoemexec.png" title="Em Execução">&nbsp;
 <% Endif %>
 <%=Capital(alltrim(QRYCONV->TXSIT))%>
 </td>
@@ -151,13 +151,13 @@ Dados do Convênio <%=cIDCNV%>
 <td>Parecer da Proposta</td>
 <td id="tdgray">
 <% If QRYPROP->INPARECERG == 'S' %>
-<img title="Parecer do Administrador" src="/images/LogoAdm.png">&nbsp;
+<img title="Parecer do Administrador" src="/images/logoadm.png">&nbsp;
 <% endif %>
 <% If QRYPROP->INPARECERJ == 'S' %>
-<img title="Parecer Jurídico" src="/images/LogoJur.png">&nbsp;
+<img title="Parecer Jurídico" src="/images/logojur.png">&nbsp;
 <% endif %>
 <% If QRYPROP->INPARECERT == 'S' %>
-<img title="Parecer Técnico" src="/images/LogoTec.png">&nbsp;
+<img title="Parecer Técnico" src="/images/logotec.png">&nbsp;
 <% endif %>
 </td>
 </tr>

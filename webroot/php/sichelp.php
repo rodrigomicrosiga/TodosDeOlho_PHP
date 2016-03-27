@@ -61,43 +61,43 @@ sobre o item escolhido.</p>
 identificadores visuais para as situações e andamento das propostas e convênios, vide a seguir:</p>
 <table>
 <tr>
-<td><img src="/images/LogoCancel.png" title="Cancelado"></td>
+<td><img src="/images/logocancel.png" title="Cancelado"></td>
 <td>A proposta foi cancelada.</td>
 </tr>
 <tr>
-<td><img src="/images/LogoOK.png" title="Aprovado"></td>
+<td><img src="/images/logook.png" title="Aprovado"></td>
 <td>Uma parte ou a íntegra da proposta foi aprovada.</td>
 </tr>
 <tr>
-<td><img src="/images/LogoRejeitado.png" title="Rejeitado"></td>
+<td><img src="/images/logorejeitado.png" title="Rejeitado"></td>
 <td>A proposta ou a prestação de contas foi rejeitada.</td>
 </tr>
 <tr>
-<td><img src="/images/LogoAnalize.png" title="Em Análise"></td>
+<td><img src="/images/logoanalize.png" title="Em Análise"></td>
 <td>A proposta ou convênio se encontra em uma etapa de análise.</td>
 </tr>
 <tr>
-<td><img src="/images/LogoEmExec.png" title="Em Execução"></td>
+<td><img src="/images/logoemexec.png" title="Em Execução"></td>
 <td>O convênio se encontra em execução.</td>
 </tr>
 <tr>
-<td><img src="/images/RedHourGlass.png" title="Vigência da Proposta Expirada"></td>
+<td><img src="/images/redhourglass.png" title="Vigência da Proposta Expirada"></td>
 <td>A proposta ou convênio possuem uma data final de vigência vencida.</td>
 </tr>
 <tr>
-<td><img src="/images/GreenFlag.png" title="Vigência da Proposta em Dia"></td>
+<td><img src="/images/greenflag.png" title="Vigência da Proposta em Dia"></td>
 <td>A data final de vigência da proposta ou convênio ainda não expirou.</td>
 </tr>
 <tr>
-<td><img src="/images/LogoAdm.png" title="Parecer do Administrador"></td>
+<td><img src="/images/logoadm.png" title="Parecer do Administrador"></td>
 <td>A proposta possui um laudo ou parecer do Gestor / Administrador.</td>
 </tr>
 <tr>
-<td><img title="Parecer Jurídico" src="/images/LogoJur.png"></td>
+<td><img title="Parecer Jurídico" src="/images/logojur.png"></td>
 <td>A proposta possui um parecer Jurídico anexado.</td>
 </tr>
 <tr>
-<td><img title="Parecer Técnico" src="/images/LogoTec.png"></td>
+<td><img title="Parecer Técnico" src="/images/logotec.png"></td>
 <td>A proposta possui um parecer técnico anexado.</td>
 </tr>
 </table>

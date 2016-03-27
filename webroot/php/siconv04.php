@@ -63,7 +63,7 @@ function SetFeedback(cAction,cProp) {
       document.getElementById("demo").innerHTML = xhttp.responseText;
     }
   };
-  xhttp.open("POST", "SetFeed.php", true);
+  xhttp.open("POST", "/php/setfeed.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send('ACT='+cAction+'&IDPRO='+cProp);
 }
@@ -110,19 +110,19 @@ Dados da Proposta <%=cIDPro%>
 <td>Situação da Proposta</td>
 <td id="tdgray">
 <% If ("CANCELADO"$QRY->TXSIT)%>
-<img src="/images/LogoCancel.png" title="Cancelado">&nbsp;
+<img src="/images/logocancel.png" title="Cancelado">&nbsp;
 <% Endif %>
 <% If ("APROVADO"$QRY->TXSIT)%>
-<img src="/images/LogoOK.png" title="Aprovado">&nbsp;
+<img src="/images/logook.png" title="Aprovado">&nbsp;
 <% Endif %>
 <% If ("REJEITADO"$QRY->TXSIT)%>
-<img src="/images/LogoRejeitado.png" title="Rejeitado">&nbsp;
+<img src="/images/logorejeitado.png" title="Rejeitado">&nbsp;
 <% Endif %>
 <% If ("ANÁLISE"$QRY->TXSIT)%>
-<img src="/images/LogoAnalize.png" title="Em Análise">&nbsp;
+<img src="/images/logoanalize.png" title="Em Análise">&nbsp;
 <% Endif %>
 <% If ("EXECUÇÃO"$QRY->TXSIT)%>
-<img src="/images/LogoEmExec.png" title="Em Execução">&nbsp;
+<img src="/images/logoemexec.png" title="Em Execução">&nbsp;
 <% Endif %>
 <%=Capital(alltrim(QRY->TXSIT))%>
 </td>
@@ -150,13 +150,13 @@ Dados da Proposta <%=cIDPro%>
 <td>Parecer da Proposta</td>
 <td id="tdgray">
 <% If QRY->INPARECERG == 'S' %>
-<img title="Parecer do Administrador" src="/images/LogoAdm.png">&nbsp;
+<img title="Parecer do Administrador" src="/images/logoadm.png">&nbsp;
 <% endif %>
 <% If QRY->INPARECERJ == 'S' %>
-<img title="Parecer Jurídico" src="/images/LogoJur.png">&nbsp;
+<img title="Parecer Jurídico" src="/images/logojur.png">&nbsp;
 <% endif %>
 <% If QRY->INPARECERT == 'S' %>
-<img title="Parecer Técnico" src="/images/LogoTec.png">&nbsp;
+<img title="Parecer Técnico" src="/images/logotec.png">&nbsp;
 <% endif %>
 </td>
 </tr>
