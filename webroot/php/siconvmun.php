@@ -3,14 +3,19 @@
 <head>
 <?php 
 
+ob_start();
+
 require_once('headmetas.php'); 
 require_once('dbconn.php'); 
+require_once('ufs.php');
 
 // -------------------------------------------------------
 // Pesquisa dos municípios dentro de um estado
 // -------------------------------------------------------
 
-if (!isset($_GET['UF'])) 
+$cUF = filter_input(INPUT_GET, 'UF');
+
+if (  is_null($cUF) ) 
 {
 	$cErrorMSG = "Estado (UF) não informado.";
 	$cErrorHLP = 'A busca por municípios não recebeu corretamente o estado a ser pesquisado. ' . 
@@ -19,7 +24,6 @@ if (!isset($_GET['UF']))
 	return;	
 }
 
-$cUF = filter_input(INPUT_GET, 'UF');
 
 ?>
 <style>
@@ -49,8 +53,7 @@ function SelectLastMUN()
 	if(typeof(Storage) !== "undefined") {
 		var savedMUN = localStorage.getItem('MUN');
 		if( savedMUN ) {
-			var currentForm = window.document.getElementById('_FORM_MUN');
-		    var currentMUN = currentForm.elements.namedItem('MUN');
+			var currentMUN = window.document.getElementById('MUN');
 			currentMUN.value = savedMUN;
 		}
 	}
@@ -61,6 +64,7 @@ function Voltar()
 }
 function ConsultaMUN(cCod) 
 {
+	
 	localStorage.setItem('MUN',cCod);
 	window.open("/php/siconv02.php?MUN="+cCod,"_self");
 }
@@ -80,8 +84,10 @@ function ConsultaGEO()
 
 function OpenGeo(position)
 {
-	window.open("/php/siconvgeo.php?LAT="+position.coords.latitude+
-	            "&LONG="+position.coords.longitude,"_self");
+	var _lat = Math.round(position.coords.latitude*10000000) / 10000000;
+	var _long = Math.round(position.coords.longitude*10000000) / 10000000;
+	window.open("/php/siconvgeo.php?LAT="+_lat+
+	            "&LONG="+_long,"_self");
 }                                         
 function FilterMun(oFilter,oSelect)
 {
@@ -102,9 +108,8 @@ function FilterMun(oFilter,oSelect)
 </head>
 <body onload="javascript:SelectLastMUN()">
 <?php require_once('ptitle.php'); ?>
-<h3>Escolha um Município <%=UFNome(cUF)%> para Pesquisar</h3>
-<p>Você pode começar digitando as primeiras letras do nome do município no campo abaixo.</p>
-<form id="_FORM_MUN">
+<h3>Estado: <?php echo UFName($cUF); ?></h3>
+<p>Escolha um município para pesquisar. Você pode começar digitando as primeiras letras do nome do município no campo de busca abaixo.</p>
 <p>
 <input type="search" id="FLT" 
 name="FLT" value="" 
@@ -114,6 +119,9 @@ autofocus></p>
 <p>
 <select id="MUN" name="MUN">
 <?php 
+
+ob_flush();
+
 $conn = MySQLConnect();
 
 $stmt = mysqli_prepare($conn, "Select CODIGO,NOME,UF from MUNICIP where UF = ? ORDER BY UF,NOME");
@@ -128,6 +136,7 @@ if (mysqli_stmt_execute ( $stmt ))
     }
 }
 MySQLDisconnect( $conn );
+ob_flush();
 ?>
 </select>
 </p>
@@ -137,9 +146,13 @@ MySQLDisconnect( $conn );
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 </p>
 <p><input type="button" value="Use sua localização" onclick="javascript:ConsultaGEO()"></p>
-</form>
 <p><input type="button" value="Retornar ao Início" onclick="javascript:Home()"></p>
 <br>
-<?php require_once('footer.php'); ?>
+<?php 
+require_once('footer.php'); 
+?>
 </body>
 </html>
+<?php 
+ob_end_flush(); 
+?>

@@ -33,8 +33,7 @@ function SelectLastUF()
 	if(typeof(Storage) !== "undefined") {
 		var savedUF = localStorage.getItem('UF');
 		if( savedUF ) {
-			var currentForm = window.document.getElementById('_FORM_UF');
-		    var currentUF = currentForm.elements.namedItem('UF');
+			var currentUF = window.document.getElementById('UF');
 			currentUF.value = savedUF;
 		}
 	}
@@ -67,7 +66,6 @@ require_once('ptitle.php');
 ?>
 <h3>Escolha o Estado do Brasil para Pesquisar</h3>
 <p>
-<form id="_FORM_UF">
 <p>
 <select id="UF" name="UF">
   <option value="AC">Acre</option>
@@ -105,7 +103,6 @@ require_once('ptitle.php');
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 </p>
 <p><input type="button" value="Use sua localização" onclick="javascript:ConsultaGEO()"></p>
-</form>
 <br>
 <br>
 <?php 

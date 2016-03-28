@@ -1,6 +1,27 @@
 <html lang="pt-BR">
 <head>
-<?php require_once('headmetas.php'); ?>
+<?php 
+require_once('headmetas.php'); 
+require_once('dbconn.php'); 
+
+// -------------------------------------------------------
+// Pesquisa dos municípios mais próximos por coordenadas geográficas
+// -------------------------------------------------------
+
+$cLAT = filter_input(INPUT_GET, 'LAT');
+$cLONG = filter_input(INPUT_GET, 'LONG');
+
+if ( is_null($cLAT) || is_null($cLONG) ) 
+{
+	$cErrorMSG = 'Coordenadas geográficas não recebidas.';
+	$cErrorHLP = 'A busca por sua localização atual não recebeu corretamente as informações de localização. ' .
+				 'Certifique-se de aceitar o uso de sua localiação para utilizar esta opção. ' .
+				 'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+    require 'sicerror.php';
+	return;	
+}
+
+?>
 <style>
 input, textarea {
   max-width:100%;
@@ -39,15 +60,43 @@ function Voltar()
 <?php require_once('ptitle.php'); ?>
 <h3>Municípios Próximos</h3>
 <br>
-<% If len(aMunic) > 0 %>
-<% For nI := 1 to len(aMunic) %>
-<p><input type="button" value="<%=aMunic[nI][2]%> / <%=aMunic[nI][3]%>" 
-onclick="javascript:ConsultaMUN('<%=aMunic[nI][1]%>','<%=aMunic[nI][3]%>')"></p>
-<% next %>
-<% else %>
-<p>Latitude: <%=cLat%><br>Longitude: <%=cLong%></p>
-<p>Não foi identificado nenhum município próximo a sua localização atual. Volte para a página anterior e selecione manualmente um Estado e Município para realizar a consulta.</p>
-<% Endif %>
+<?php 
+$conn = MySQLConnect();
+
+$cQuery = 	'select CODIGO,NOME,UF,' .
+			' abs ( LATITUDE - ? ) + abs ( LONGITUDE - ? ) as DIF '.
+			' from MUNICIP MUN ' .
+			' where (abs ( LATITUDE - ? )  + abs ( LONGITUDE - ? )) < 0.2 ' . 
+			' order by 4';
+
+$stmt = mysqli_prepare($conn, $cQuery);
+
+mysqli_stmt_bind_param($stmt,'dddd',$cLAT,$cLONG,$cLAT,$cLONG);
+
+if (mysqli_stmt_execute ( $stmt ))
+{
+	$nShow = 0;
+
+	mysqli_stmt_bind_result ( $stmt , $dbCODIGO , $dbNOME , $dbUF , $nDist );
+	while (mysqli_stmt_fetch($stmt))
+    {
+		echo '<p><input type="button" value="' . htmlspecialchars($dbNOME) . ' / ' . $dbUF. '" ' .
+				'onclick="javascript:ConsultaMUN(\''. $dbCODIGO. '\',\''. $dbUF. '\')"></p>' ;
+		$nShow++;
+    }
+
+	if ( $nShow == 0 )
+	{
+		echo '<p>Latitude: ' .$cLAT. '<br>Longitude: ' .$cLONG. '</p>';
+		echo '<p>Não foi identificado nenhum município próximo a sua localização atual. Volte para a página anterior ' . 
+				'e selecione manualmente um Estado e Município para realizar a consulta.</p>' ;
+	}
+
+}
+
+MySQLDisconnect( $conn );
+?>
+
 <p><input type="button" value="Voltar" onclick="javascript:Voltar()"></p>
 <br>
 <br>
