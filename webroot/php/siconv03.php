@@ -1,4 +1,4 @@
-<%
+ï»¿<%
 Local nI,nJ
 Local nRows := 0
 %>
@@ -95,20 +95,20 @@ function HideHelp()
 </head>
 <body onload="javascript:HideHelp()">
 <?php require_once('ptitle.php'); ?>
-<h3><%=Capital(cMunic)%> / <%=cUF%><br><%=Capital(cOrgaoCCD)%><br>( Página <%=cValToChar(nPage)%> )</h3>
+<h3><%=Capital(cMunic)%> / <%=cUF%><br><%=Capital(cOrgaoCCD)%><br>( PÃ¡gina <%=cValToChar(nPage)%> )</h3>
 
 <div id="_HELP" style="display: none">
 <hr>
-<p>Esta consulta mostra as propostas e convênios realizados para o município em questão, 
-mostrando apenas as informações relacionadas a <b><%=Capital(cOrgaoCCD)%></b>. Para obter maiores 
-detalhes sobre cada Proposta ou Convênio celebrado, basta clicar no botão de Consulta 
+<p>Esta consulta mostra as propostas e convÃªnios realizados para o municÃ­pio em questÃ£o, 
+mostrando apenas as informaÃ§Ãµes relacionadas a <b><%=Capital(cOrgaoCCD)%></b>. Para obter maiores 
+detalhes sobre cada Proposta ou ConvÃªnio celebrado, basta clicar no botÃ£o de Consulta 
 correspondente.</p>
-<p id="phelp">Após escolher um órgão para consultar, serão apresentadas todas as propostas e convênios firmados com o órgão 
-em questão para aquele minucípio, contendo apenas algumas informações da proposta, mostrando primeiro as propostas
-recentemente enviadas. Ao escolher uma proposta ou convênio para detalhamento, serão mostradas as informações completas
+<p id="phelp">ApÃ³s escolher um Ã³rgÃ£o para consultar, serÃ£o apresentadas todas as propostas e convÃªnios firmados com o Ã³rgÃ£o 
+em questÃ£o para aquele minucÃ­pio, contendo apenas algumas informaÃ§Ãµes da proposta, mostrando primeiro as propostas
+recentemente enviadas. Ao escolher uma proposta ou convÃªnio para detalhamento, serÃ£o mostradas as informaÃ§Ãµes completas
 sobre o item escolhido. </p>
-<p id="phelp">&nbsp;&nbsp;&nbsp;Para tornar a visualização das informações mais intuitiva e dinâmica, foram utilizados alguns 
-identificadores visuais para as situações e andamento das propostas e convênios, vide a seguir:</p>
+<p id="phelp">&nbsp;&nbsp;&nbsp;Para tornar a visualizaÃ§Ã£o das informaÃ§Ãµes mais intuitiva e dinÃ¢mica, foram utilizados alguns 
+identificadores visuais para as situaÃ§Ãµes e andamento das propostas e convÃªnios, vide a seguir:</p>
 <table>
 <tr>
 <td><img src="/images/logocancel.png" title="Cancelado"></td>
@@ -116,39 +116,39 @@ identificadores visuais para as situações e andamento das propostas e convênios,
 </tr>
 <tr>
 <td><img src="/images/logook.png" title="Aprovado"></td>
-<td>Uma parte ou a íntegra da proposta foi aprovada.</td>
+<td>Uma parte ou a Ã­ntegra da proposta foi aprovada.</td>
 </tr>
 <tr>
 <td><img src="/images/logorejeitado.png" title="Rejeitado"></td>
-<td>A proposta ou a prestação de contas foi rejeitada.</td>
+<td>A proposta ou a prestaÃ§Ã£o de contas foi rejeitada.</td>
 </tr>
 <tr>
-<td><img src="/images/logoanalize.png" title="Em Análise"></td>
-<td>A proposta ou convênio se encontra em uma etapa de análise.</td>
+<td><img src="/images/logoanalize.png" title="Em AnÃ¡lise"></td>
+<td>A proposta ou convÃªnio se encontra em uma etapa de anÃ¡lise.</td>
 </tr>
 <tr>
-<td><img src="/images/logoemexec.png" title="Em Execução"></td>
-<td>O convênio se encontra em execução.</td>
+<td><img src="/images/logoemexec.png" title="Em ExecuÃ§Ã£o"></td>
+<td>O convÃªnio se encontra em execuÃ§Ã£o.</td>
 </tr>
 <tr>
-<td><img src="/images/redhourglass.png" title="Vigência da Proposta Expirada"></td>
-<td>A proposta ou convênio possuem uma data final de vigência vencida.</td>
+<td><img src="/images/redhourglass.png" title="VigÃªncia da Proposta Expirada"></td>
+<td>A proposta ou convÃªnio possuem uma data final de vigÃªncia vencida.</td>
 </tr>
 <tr>
-<td><img src="/images/greenflag.png" title="Vigência da Proposta em Dia"></td>
-<td>A data final de vigência da proposta ou convênio ainda não expirou.</td>
+<td><img src="/images/greenflag.png" title="VigÃªncia da Proposta em Dia"></td>
+<td>A data final de vigÃªncia da proposta ou convÃªnio ainda nÃ£o expirou.</td>
 </tr>
 <tr>
 <td><img src="/images/logoadm.png" title="Parecer do Administrador"></td>
 <td>A proposta possui um laudo ou parecer do Gestor / Administrador.</td>
 </tr>
 <tr>
-<td><img title="Parecer Jurídico" src="/images/logojur.png"></td>
-<td>A proposta possui um parecer Jurídico anexado.</td>
+<td><img title="Parecer JurÃ­dico" src="/images/logojur.png"></td>
+<td>A proposta possui um parecer JurÃ­dico anexado.</td>
 </tr>
 <tr>
-<td><img title="Parecer Técnico" src="/images/logotec.png"></td>
-<td>A proposta possui um parecer técnico anexado.</td>
+<td><img title="Parecer TÃ©cnico" src="/images/logotec.png"></td>
+<td>A proposta possui um parecer tÃ©cnico anexado.</td>
 </tr>
 </table>
 <hr>
@@ -177,7 +177,7 @@ identificadores visuais para as situações e andamento das propostas e convênios,
 
 <% If nPage > 1 %>
 <p>
-<input type="button" value="Página Anterior" onclick="javascript:Pagina(<%=cValToChar(nPage-1)%>,'<%=cOrd%>')">
+<input type="button" value="PÃ¡gina Anterior" onclick="javascript:Pagina(<%=cValToChar(nPage-1)%>,'<%=cOrd%>')">
 </p>
 <% endif %>
 
@@ -188,7 +188,7 @@ While !eof()
 %>
 <tr><td colspan="4">
 <% IF !empty(QRY->IDCNV) %>
-<input id="normalbutton" type="button" value="Consultar Convênio <%=QRY->IDCNV%>" onclick="javascript:Convenio('<%=QRY->IDCNV%>')">
+<input id="normalbutton" type="button" value="Consultar ConvÃªnio <%=QRY->IDCNV%>" onclick="javascript:Convenio('<%=QRY->IDCNV%>')">
 <% else %>
 <input id="normalbutton" type="button" value="Consultar Proposta <%=QRY->IDPRO%>" onclick="javascript:Proposta('<%=QRY->IDPRO%>')">
 <% Endif %>                     
@@ -202,25 +202,25 @@ While !eof()
 <% If ("REJEITADO"$QRY->TXSIT)%>
 <img src="/images/logorejeitado.png" title="Rejeitado">&nbsp;
 <% Endif %>
-<% If ("ANÁLISE"$QRY->TXSIT)%>
-<img src="/images/logoanalize.png" title="Em Análise">&nbsp;
+<% If ("ANÃLISE"$QRY->TXSIT)%>
+<img src="/images/logoanalize.png" title="Em AnÃ¡lise">&nbsp;
 <% Endif %>
-<% If ("EXECUÇÃO"$QRY->TXSIT)%>
-<img src="/images/logoemexec.png" title="Em Execução">&nbsp;
+<% If ("EXECUÃ‡ÃƒO"$QRY->TXSIT)%>
+<img src="/images/logoemexec.png" title="Em ExecuÃ§Ã£o">&nbsp;
 <% Endif %>
 <% IF QRY->DTFIMVIG < date() /* Ampulheta - Proposta VENCIDA*/%>
-<img src="/images/redhourglass.png" title="Vigência da Proposta Expirada">&nbsp;
+<img src="/images/redhourglass.png" title="VigÃªncia da Proposta Expirada">&nbsp;
 <% Else %>
-<img src="/images/greenflag.png" title="Vigência da Proposta em Dia">&nbsp;
+<img src="/images/greenflag.png" title="VigÃªncia da Proposta em Dia">&nbsp;
 <% Endif %>
 <% If QRY->INPARECERG == 'S' %>
 <img title="Parecer do Administrador" src="/images/logoadm.png">&nbsp;
 <% endif %>
 <% If QRY->INPARECERJ == 'S' %>
-<img title="Parecer Jurídico" src="/images/logojur.png">&nbsp;
+<img title="Parecer JurÃ­dico" src="/images/logojur.png">&nbsp;
 <% endif %>
 <% If QRY->INPARECERT == 'S' %>
-<img title="Parecer Técnico" src="/images/logotec.png">&nbsp;
+<img title="Parecer TÃ©cnico" src="/images/logotec.png">&nbsp;
 <% endif %>
 </td></tr>
 <tr>
@@ -231,7 +231,7 @@ While !eof()
 </tr>
 <% IF !empty(QRY->TXSIT) %>
 <tr>
-<td>Situação Atual</td>
+<td>SituaÃ§Ã£o Atual</td>
 <td id="tdgray" colspan="3"><%=Capital(alltrim(QRY->TXSIT))%></td>
 </tr> 
 <% Endif %>
@@ -248,7 +248,7 @@ While !eof()
 <% Enddo %>
 </table>
 <% If nPage > 1 %>
-<p><input type="button" value="Página Anterior" onclick="javascript:Pagina(<%=cValToChar(nPage-1)%>,'<%=cOrd%>')"></p>
+<p><input type="button" value="PÃ¡gina Anterior" onclick="javascript:Pagina(<%=cValToChar(nPage-1)%>,'<%=cOrd%>')"></p>
 <% endif %>
 <% If nRows >= nPageSize %>
 <p><input type="button" value="Mais resultados" onclick="javascript:Pagina(<%=cValToChar(nPage+1)%>,'<%=cOrd%>')"></p>
@@ -256,7 +256,7 @@ While !eof()
 <p>
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 &nbsp;&nbsp;&nbsp;
-<input type="button" value="Retornar ao Início" onclick="javascript:Home()">
+<input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()">
 </p>
 <br>
 <?php require_once('footer.php'); ?>

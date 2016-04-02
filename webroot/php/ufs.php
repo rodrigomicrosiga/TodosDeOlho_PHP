@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 /*
 Lista de estados do BRasil - Encode CP1252
@@ -10,29 +10,29 @@ function UFName( $cUF )
 	$aUFs = [
 		"AC" => "Acre",
 		"AL" => "Alagoas",
-		"AP" => "Amapá",
+		"AP" => "AmapÃ¡",
 		"AM" => "Amazonas",
 		"BA" => "Bahia",
-		"CE" => "Ceará",
+		"CE" => "CearÃ¡",
 		"DF" => "Distrito Federal",
-		"ES" => "Espírito Santo",
-		"GO" => "Goiás",
-		"MA" => "Maranhão",
+		"ES" => "EspÃ­rito Santo",
+		"GO" => "GoiÃ¡s",
+		"MA" => "MaranhÃ£o",
 		"MT" => "Mato Grosso",
 		"MS" => "Mato Grosso do Sul",
 		"MG" => "Minas Gerais",
-		"PA" => "Pará",
-		"PB" => "Paraíba",
-		"PR" => "Paraná",
+		"PA" => "ParÃ¡",
+		"PB" => "ParaÃ­ba",
+		"PR" => "ParanÃ¡",
 		"PE" => "Pernambuco",
-		"PI" => "Piauí­",
+		"PI" => "PiauÃ­Â­",
 		"RJ" => "Rio de Janeiro",
 		"RN" => "Rio Grande do Norte",
 		"RS" => "Rio Grande do Sul",
-		"RO" => "Rondônia",
+		"RO" => "RondÃ´nia",
 		"RR" => "Roraima",
 		"SC" => "Santa Catarina",
-		"SP" => "São Paulo",
+		"SP" => "SÃ£o Paulo",
 		"SE" => "Sergipe",
 		"TO" => "Tocantins"
 	];

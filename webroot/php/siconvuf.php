@@ -1,4 +1,4 @@
-<html lang="pt-BR">
+Ôªø<html lang="pt-BR">
 <head>
 <?php require_once('headmetas.php'); ?>
 <style>
@@ -44,7 +44,7 @@ function ConsultaGEO()
     {
         navigator.geolocation.getCurrentPosition(OpenGeo);
     } else { 
-        alert("LocalizaÁ„o atual n„o disponivel");
+        alert("Localiza√ß√£o atual n√£o disponivel");
     }
 }
 
@@ -70,29 +70,29 @@ require_once('ptitle.php');
 <select id="UF" name="UF">
   <option value="AC">Acre</option>
   <option value="AL">Alagoas</option>
-  <option value="AP">Amap·</option>
+  <option value="AP">Amap√°</option>
   <option value="AM">Amazonas</option>
   <option value="BA">Bahia</option>
-  <option value="CE">Cear·</option>
+  <option value="CE">Cear√°</option>
   <option value="DF">Distrito Federal</option>
-  <option value="ES">EspÌrito Santo</option>
-  <option value="GO">Goi·s</option>
-  <option value="MA">Maranh„o</option>
+  <option value="ES">Esp√≠rito Santo</option>
+  <option value="GO">Goi√°s</option>
+  <option value="MA">Maranh√£o</option>
   <option value="MT">Mato Grosso</option>
   <option value="MS">Mato Grosso do Sul</option>
   <option value="MG">Minas Gerais</option>
-  <option value="PA">Par·</option>
-  <option value="PB">ParaÌba</option>
-  <option value="PR">Paran·</option>
+  <option value="PA">Par√°</option>
+  <option value="PB">Para√≠ba</option>
+  <option value="PR">Paran√°</option>
   <option value="PE">Pernambuco</option>
-  <option value="PI">PiauÌ≠</option>
+  <option value="PI">Piau√≠¬≠</option>
   <option value="RJ">Rio de Janeiro</option>
   <option value="RN">Rio Grande do Norte</option>
   <option value="RS">Rio Grande do Sul</option>
-  <option value="RO">RondÙnia</option>
+  <option value="RO">Rond√¥nia</option>
   <option value="RR">Roraima</option>
   <option value="SC">Santa Catarina</option>
-  <option value="SP">S„o Paulo</option>
+  <option value="SP">S√£o Paulo</option>
   <option value="SE">Sergipe</option>
   <option value="TO">Tocantins</option>
 </select>
@@ -102,7 +102,7 @@ require_once('ptitle.php');
 &nbsp;&nbsp;&nbsp;
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 </p>
-<p><input type="button" value="Use sua localizaÁ„o" onclick="javascript:ConsultaGEO()"></p>
+<p><input type="button" value="Use sua localiza√ß√£o" onclick="javascript:ConsultaGEO()"></p>
 <br>
 <br>
 <?php 

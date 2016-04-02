@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <?php require_once('headmetas.php'); ?>
@@ -38,8 +38,8 @@ function OnLoad()
 <?php require_once('ptitle.php'); ?>
 <p>Obrigado por usar o TODOS DE OLHO.</p> 
 <p>Esta janela deve fechar automaticamente em alguns segundos. Caso a janela 
-não feche sozinha, você pode fechar o navegador de Internet.</p> 
-<p><input type="button" value="Retornar ao Início" onclick="javascript:Home()"></p>
+nÃ£o feche sozinha, vocÃª pode fechar o navegador de Internet.</p> 
+<p><input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()"></p>
 <br>
 <?php require_once('footer.php'); ?>
 </body>

@@ -1,4 +1,4 @@
-<footer>
+ï»¿<footer>
 <hr>
-<p><small>Versão 0.160325 - Copyright (C) 2016 Júlio Wittwer</small></p>
+<p><small>VersÃ£o 0.160325 - Copyright (C) 2016 JÃºlio Wittwer</small></p>
 </footer>

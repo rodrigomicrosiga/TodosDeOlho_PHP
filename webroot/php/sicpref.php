@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <?php require_once('headmetas.php'); ?>
@@ -32,7 +32,7 @@ function Voltar()
 </head>
 <body>
 <?php require_once('ptitle.php'); ?>
-<h3>Prefer�ncias</h3>
+<h3>Preferências</h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

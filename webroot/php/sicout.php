@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -33,7 +33,7 @@ p {
 <br>
 <br>
 <footer>
-<p><small>Copyright (C) 2015 J�lio Wittwer</small></p>
+<p><small>Copyright (C) 2015 Júlio Wittwer</small></p>
 </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <?php 
@@ -12,7 +12,7 @@ require_once('headmetas.php');
 <meta property="og:image:width" content="298">
 <meta property="og:image:height" content="75">
 <style>
-input, textarea {
+input, textarea {	
   max-width:100%;
 }
 
@@ -48,8 +48,8 @@ function Entrar(cUrl)
 require_once('fbsdk.php');
 require_once('ptitle.php');
 ?>
-<p>Acompanhe as Propostas e Convênios firmados entre a União e o seu Município, 
-fique por dentro da utilização das verbas e ajude o país a acabar com a corrupção. 
+<p>Acompanhe as Propostas e ConvÃªnios firmados entre a UniÃ£o e o seu MunicÃ­pio, 
+fique por dentro da utilizaÃ§Ã£o das verbas e ajude o paÃ­s a acabar com a corrupÃ§Ã£o. 
 Participe e compartilhe esta iniciativa.</p>  
 <p><input type="button" value="Consultar Propostas" onclick="javascript:Entrar('/php/siconvuf.php')"></p>
 <p><input type="button" value="Precisa de Ajuda ?" onclick="javascript:Entrar('/php/sichelp.php')"></p>

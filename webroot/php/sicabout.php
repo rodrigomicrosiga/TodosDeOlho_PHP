@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <?php require_once('headmetas.php'); ?>
@@ -36,11 +36,11 @@ function Voltar()
 </head>
 <body>
 <?php require_once('ptitle.php'); ?>
-<p>O portal <b>Todos de Olho</b> disponibiliza de forma simples e rápida as informações públicas
-disponíveis para Download no <b>Portal de Convênios</b>. Última alimentação de dados 
+<p>O portal <b>Todos de Olho</b> disponibiliza de forma simples e rÃ¡pida as informaÃ§Ãµes pÃºblicas
+disponÃ­veis para Download no <b>Portal de ConvÃªnios</b>. Ãšltima alimentaÃ§Ã£o de dados 
 feita em 07/03/2016.</p>
 <pre>
-Desenvolvimento - Júlio Wittwer<br>
+Desenvolvimento - JÃºlio Wittwer<br>
 <a href="mailto:siga0984@gmail.com?Subject=Todos%20de%20Olho" target="_blank">Enviar e-Mail</a><br>
 <a href="https://www.facebook.com/siga0984" target="_blank">Acessar Facebook</a><br>
 <a href="https://br.linkedin.com/in/siga0984" target="_blank">Acessar LinkedIn</a><br>

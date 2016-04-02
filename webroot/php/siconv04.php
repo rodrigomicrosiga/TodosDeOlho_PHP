@@ -1,4 +1,4 @@
-<%
+ï»¿<%
 Local nI,nJ
 %>
 
@@ -101,13 +101,13 @@ Dados da Proposta <%=cIDPro%>
 <% While !eof() %>
 <% If !empty(QRY->TXMOD) %>
 <tr>
-<td>Modalidade do Convênio</td>
+<td>Modalidade do ConvÃªnio</td>
 <td id="tdgray"><%=Capital(alltrim(cValToChar(QRY->TXMOD)))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->TXSIT) %>
 <tr>
-<td>Situação da Proposta</td>
+<td>SituaÃ§Ã£o da Proposta</td>
 <td id="tdgray">
 <% If ("CANCELADO"$QRY->TXSIT)%>
 <img src="/images/logocancel.png" title="Cancelado">&nbsp;
@@ -118,11 +118,11 @@ Dados da Proposta <%=cIDPro%>
 <% If ("REJEITADO"$QRY->TXSIT)%>
 <img src="/images/logorejeitado.png" title="Rejeitado">&nbsp;
 <% Endif %>
-<% If ("ANÁLISE"$QRY->TXSIT)%>
-<img src="/images/logoanalize.png" title="Em Análise">&nbsp;
+<% If ("ANÃLISE"$QRY->TXSIT)%>
+<img src="/images/logoanalize.png" title="Em AnÃ¡lise">&nbsp;
 <% Endif %>
-<% If ("EXECUÇÃO"$QRY->TXSIT)%>
-<img src="/images/logoemexec.png" title="Em Execução">&nbsp;
+<% If ("EXECUÃ‡ÃƒO"$QRY->TXSIT)%>
+<img src="/images/logoemexec.png" title="Em ExecuÃ§Ã£o">&nbsp;
 <% Endif %>
 <%=Capital(alltrim(QRY->TXSIT))%>
 </td>
@@ -130,7 +130,7 @@ Dados da Proposta <%=cIDPro%>
 <% Endif %>
 <% If !empty(QRY->TXSUBSIT) %>
 <tr>
-<td>Subsituação do Convênio</td>
+<td>SubsituaÃ§Ã£o do ConvÃªnio</td>
 <td id="tdgray"><%=Capital(alltrim(QRY->TXSUBSIT))%></td>
 </tr>
 <% Endif %>
@@ -153,10 +153,10 @@ Dados da Proposta <%=cIDPro%>
 <img title="Parecer do Administrador" src="/images/logoadm.png">&nbsp;
 <% endif %>
 <% If QRY->INPARECERJ == 'S' %>
-<img title="Parecer Jurídico" src="/images/logojur.png">&nbsp;
+<img title="Parecer JurÃ­dico" src="/images/logojur.png">&nbsp;
 <% endif %>
 <% If QRY->INPARECERT == 'S' %>
-<img title="Parecer Técnico" src="/images/logotec.png">&nbsp;
+<img title="Parecer TÃ©cnico" src="/images/logotec.png">&nbsp;
 <% endif %>
 </td>
 </tr>
@@ -170,25 +170,25 @@ Dados da Proposta <%=cIDPro%>
 <% Endif %>
 <% If !empty(QRY->DTINIVIG) %>
 <tr>
-<td>Início de Vigência</td>
+<td>InÃ­cio de VigÃªncia</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->DTINIVIG))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->DTFIMVIG) %>
 <tr>
-<td>Final da Vigência</td>
+<td>Final da VigÃªncia</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->DTFIMVIG))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->DTASS) %>
 <tr>
-<td>Convênio assinado em</td>
+<td>ConvÃªnio assinado em</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->DTASS))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->DTPUB) %>
 <tr>
-<td>Convênio publicado em</td>
+<td>ConvÃªnio publicado em</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->DTPUB))%></td>
 </tr>
 <% Endif %>
@@ -206,7 +206,7 @@ Dados da Proposta <%=cIDPro%>
 <% Endif %>
 <% If !empty(QRY->VLREPEXERC) %>
 <tr>
-<td>Repasse no exercício atual</td>
+<td>Repasse no exercÃ­cio atual</td>
 <td id="tdgray">R$ <%=Transform(QRY->VLREPEXERC,"@E 999,999,999,999.99")%></td>
 </tr>
 <% Endif %>
@@ -240,13 +240,13 @@ Dados da Proposta <%=cIDPro%>
 <tr><td id="tdcenter" colspan="2">Dados do Proponente</td></tr>
 <% If !empty(QRY->CDIDPPN) %>
 <tr>
-<td>Identificação do Proponente</td>
+<td>IdentificaÃ§Ã£o do Proponente</td>
 <td id="tdgray"><%=QRY->CDIDPPN+' - '+Capital(alltrim(QRY->NMPPN))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->TXQLFPPN) %>
 <tr>
-<td>Qualificação do Proponente</td>
+<td>QualificaÃ§Ã£o do Proponente</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->TXQLFPPN))%></td>
 </tr>
 <% Endif %>
@@ -258,13 +258,13 @@ Dados da Proposta <%=cIDPro%>
 <% Endif %>
 <% If !empty(QRY->NMMUNPPN) %>
 <tr>
-<td>Município</td>
+<td>MunicÃ­pio</td>
 <td id="tdgray"><%=alltrim(QRY->NMMUNPPN)%> / <%=QRY->UFPPN%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->CDRPNPPN) %>
 <tr>
-<td>Responsável pelo Proponente</td>
+<td>ResponsÃ¡vel pelo Proponente</td>
 <td id="tdgray"><%=QRY->CDRPNPPN+' - '+Capital(alltrim(QRY->NMRPNPPN))%></td>
 </tr>
 <% Endif %>
@@ -278,53 +278,53 @@ Dados da Proposta <%=cIDPro%>
 <% Endif %>
 <% If !empty(QRY->NRPRO) %>
 <tr>
-<td>Número da Proposta</td>
+<td>NÃºmero da Proposta</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->NRPRO  ))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->ANOCNV) %>
 <tr>
-<td>Ano do Convênio</td>
+<td>Ano do ConvÃªnio</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->ANOCNV ))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->NRCNV) %>
 <tr>
-<td>Número do Convênio</td>
+<td>NÃºmero do ConvÃªnio</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->NRCNV  ))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->IDPRO) %>
 <tr>
-<td>Código identificador da Proposta</td>
+<td>CÃ³digo identificador da Proposta</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->IDPRO))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->IDCNV) %>
 <tr>
-<td>Código Identificador do Convênio</td>
+<td>CÃ³digo Identificador do ConvÃªnio</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->IDCNV))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->IDPROPPGM) %>
 <tr>
-<td>Código de Identificação da Proposta/Programa</td>
+<td>CÃ³digo de IdentificaÃ§Ã£o da Proposta/Programa</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->IDPROPPGM ))%></td>
 </tr>
 <% endif %>
 
 <% /* ------------------------------------------------------------------  */ %>
-<tr><td id="tdcenter" colspan="2">Detalhamento do Programa / Convênio</td></tr>
+<tr><td id="tdcenter" colspan="2">Detalhamento do Programa / ConvÃªnio</td></tr>
 
 <% If !empty(QRY->CDPGM) %>
 <tr>
-<td>Código do Programa</td>
+<td>CÃ³digo do Programa</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->CDPGM))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->CDACTPGM) %>
 <tr>
-<td>Código da Ação do Programa</td>
+<td>CÃ³digo da AÃ§Ã£o do Programa</td>
 <td id="tdgray"><%=alltrim(cValToChar(QRY->CDACTPGM))%></td>
 </tr>
 <tr>
@@ -337,7 +337,7 @@ Dados da Proposta <%=cIDPro%>
 
 <% If !empty(QRYPROG->TXDESCRICA) %>
 <tr>
-<td>Descrição do Programa</td>
+<td>DescriÃ§Ã£o do Programa</td>
 <td id="tdgray"><%=Capital(alltrim(QRYPROG->TXDESCRICA))%></td>
 </tr>
 <% Endif %>
@@ -346,25 +346,25 @@ Dados da Proposta <%=cIDPro%>
 <td id="tdgray"><%=cValToChar(QRYPROG->QTPRO)%></td>
 </tr>
 <tr>
-<td>Convênios realizados</td>
+<td>ConvÃªnios realizados</td>
 <td id="tdgray"><%=cValToChar(QRYPROG->QTCNV)%></td>
 </tr>
 
 <% If !empty(QRY->CDORGSUP) %>
 <tr>
-<td>Órgão Superior da Proposta</td>
+<td>Ã“rgÃ£o Superior da Proposta</td>
 <td id="tdgray"><%=alltrim(QRY->CDORGSUP)+' - '+Capital(Alltrim(QRY->NMORGSUP))%></td>
 </tr>
 <% Endif %>
 <% If !empty(QRY->CDORGCCD) %>
 <tr>
-<td>Órgão Concedente</td>
+<td>Ã“rgÃ£o Concedente</td>
 <td id="tdgray"><%=alltrim(QRY->CDORGCCD)+' - '+Capital(Alltrim(QRY->NMORGCCD))%></td>
 </tr>
 <% Endif %>   
 <% If !empty(QRY->CDRPNCCD) %>
 <tr>
-<td>Responsável pelo Concedente</td>
+<td>ResponsÃ¡vel pelo Concedente</td>
 <td id="tdgray"><%=QRY->CDRPNCCD+' - '+Capital(alltrim(QRY->NMRPNCCD))%></td>
 </tr>
 <% Endif %>
@@ -375,7 +375,7 @@ Dados da Proposta <%=cIDPro%>
 <p>
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 &nbsp;&nbsp;&nbsp;
-<input type="button" value="Retornar ao Início" onclick="javascript:Home()">
+<input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()">
 </p>
 <br>
 <?php require_once('footer.php'); ?>

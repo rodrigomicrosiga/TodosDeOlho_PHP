@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <?php require_once('headmetas.php'); ?>
@@ -38,8 +38,8 @@ function Home()
 <h3><?php echo $cErrorMSG ?></h3>
 <p><?php echo $cErrorHLP ?></hp>
 <p><input type="button" value="Voltar" onclick="javascript:Voltar()"></p>
-<p><input type="button" value="Retornar ao Início" onclick="javascript:Home()"></p>
-<p>Para reportar um erro, envie um email ao Administrador do Site, usando a opção abaixo:</p>
+<p><input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()"></p>
+<p>Para reportar um erro, envie um email ao Administrador do Site, usando a opÃ§Ã£o abaixo:</p>
 <p><a href="mailto:siga0984@gmail.com?Subject=Todos%20de%20Olho%20(ERROR_REPORT)" target="_blank">Reportar Erro</a></p>
 <br>
 <?php require_once('footer.php'); ?>

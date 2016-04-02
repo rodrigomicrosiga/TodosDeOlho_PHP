@@ -1,11 +1,11 @@
-<html lang="pt-BR">
+Ôªø<html lang="pt-BR">
 <head>
 <?php 
 require_once('headmetas.php'); 
 require_once('dbconn.php'); 
 
 // -------------------------------------------------------
-// Pesquisa dos municÌpios mais prÛximos por coordenadas geogr·ficas
+// Pesquisa dos munic√≠pios mais pr√≥ximos por coordenadas geogr√°ficas
 // -------------------------------------------------------
 
 $cLAT = filter_input(INPUT_GET, 'LAT');
@@ -13,10 +13,10 @@ $cLONG = filter_input(INPUT_GET, 'LONG');
 
 if ( is_null($cLAT) || is_null($cLONG) ) 
 {
-	$cErrorMSG = 'Coordenadas geogr·ficas n„o recebidas.';
-	$cErrorHLP = 'A busca por sua localizaÁ„o atual n„o recebeu corretamente as informaÁıes de localizaÁ„o. ' .
-				 'Certifique-se de aceitar o uso de sua localiaÁ„o para utilizar esta opÁ„o. ' .
-				 'Retorne para a tela anterior e tente novamente, ou volte ao inÌcio do site.' ;
+	$cErrorMSG = 'Coordenadas geogr√°ficas n√£o recebidas.';
+	$cErrorHLP = 'A busca por sua localiza√ß√£o atual n√£o recebeu corretamente as informa√ß√µes de localiza√ß√£o. ' .
+				 'Certifique-se de aceitar o uso de sua localia√ß√£o para utilizar esta op√ß√£o. ' .
+				 'Retorne para a tela anterior e tente novamente, ou volte ao in√≠cio do site.' ;
     require 'sicerror.php';
 	return;	
 }
@@ -58,7 +58,7 @@ function Voltar()
 </head>
 <body onload="javascript:SelectLastUF()">
 <?php require_once('ptitle.php'); ?>
-<h3>MunicÌpios PrÛximos</h3>
+<h3>Munic√≠pios Pr√≥ximos</h3>
 <br>
 <?php 
 $conn = MySQLConnect();
@@ -88,8 +88,8 @@ if (mysqli_stmt_execute ( $stmt ))
 	if ( $nShow == 0 )
 	{
 		echo '<p>Latitude: ' .$cLAT. '<br>Longitude: ' .$cLONG. '</p>';
-		echo '<p>N„o foi identificado nenhum municÌpio prÛximo a sua localizaÁ„o atual. Volte para a p·gina anterior ' . 
-				'e selecione manualmente um Estado e MunicÌpio para realizar a consulta.</p>' ;
+		echo '<p>N√£o foi identificado nenhum munic√≠pio pr√≥ximo a sua localiza√ß√£o atual. Volte para a p√°gina anterior ' . 
+				'e selecione manualmente um Estado e Munic√≠pio para realizar a consulta.</p>' ;
 	}
 
 }

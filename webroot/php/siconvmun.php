@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <?php 
@@ -10,16 +10,16 @@ require_once('dbconn.php');
 require_once('ufs.php');
 
 // -------------------------------------------------------
-// Pesquisa dos municípios dentro de um estado
+// Pesquisa dos municÃ­pios dentro de um estado
 // -------------------------------------------------------
 
 $cUF = filter_input(INPUT_GET, 'UF');
 
 if (  is_null($cUF) ) 
 {
-	$cErrorMSG = "Estado (UF) não informado.";
-	$cErrorHLP = 'A busca por municípios não recebeu corretamente o estado a ser pesquisado. ' . 
-					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+	$cErrorMSG = "Estado (UF) nÃ£o informado.";
+	$cErrorHLP = 'A busca por municÃ­pios nÃ£o recebeu corretamente o estado a ser pesquisado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao inÃ­cio do site.' ;
     require 'sicerror.php';
 	return;	
 }
@@ -78,7 +78,7 @@ function ConsultaGEO()
     {
         navigator.geolocation.getCurrentPosition(OpenGeo);
     } else { 
-        alert("Localização atual não disponivel");
+        alert("LocalizaÃ§Ã£o atual nÃ£o disponivel");
     }
 }
 
@@ -109,7 +109,7 @@ function FilterMun(oFilter,oSelect)
 <body onload="javascript:SelectLastMUN()">
 <?php require_once('ptitle.php'); ?>
 <h3>Estado: <?php echo UFName($cUF); ?></h3>
-<p>Escolha um município para pesquisar. Você pode começar digitando as primeiras letras do nome do município no campo de busca abaixo.</p>
+<p>Escolha um municÃ­pio para pesquisar. VocÃª pode comeÃ§ar digitando as primeiras letras do nome do municÃ­pio no campo de busca abaixo.</p>
 <p>
 <input type="search" id="FLT" 
 name="FLT" value="" 
@@ -145,8 +145,8 @@ ob_flush();
 &nbsp;&nbsp;&nbsp;
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 </p>
-<p><input type="button" value="Use sua localização" onclick="javascript:ConsultaGEO()"></p>
-<p><input type="button" value="Retornar ao Início" onclick="javascript:Home()"></p>
+<p><input type="button" value="Use sua localizaÃ§Ã£o" onclick="javascript:ConsultaGEO()"></p>
+<p><input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()"></p>
 <br>
 <?php 
 require_once('footer.php'); 

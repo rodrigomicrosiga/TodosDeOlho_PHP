@@ -1,4 +1,4 @@
-<tr><td id="tdcenter" colspan="2">Plano de Aplicação Detalhado</td></tr>
+ï»¿<tr><td id="tdcenter" colspan="2">Plano de AplicaÃ§Ã£o Detalhado</td></tr>
 <%
 While !QRYPLANOAP->(eof())
 %>

@@ -1,4 +1,4 @@
-<html lang="pt-BR">
+ï»¿<html lang="pt-BR">
 <head>
 <?php require_once('headmetas.php'); ?>
 <style>
@@ -33,7 +33,7 @@ function Propostas()
 }
 function Conveniados()
 {   
-  alert('*** Em Construção ***');
+  alert('*** Em ConstruÃ§Ã£o ***');
 	//window.open("/php/siconv06.php?MUN=<%=cIDMun%>","_self");
 }
 function Home()
@@ -64,14 +64,14 @@ function HideHelp()
 <body onload="javascript:HideHelp();">
 <?php require_once('ptitle.php'); ?>
 <h3><%=Capital(cMunic)%> / <%=cUf%></h3>
-<p>A partir deste ponto, estão disponíveis as consultas relacionadas ao 
-município de <b><%=Capital(cMunic)%></b>, no Estado <b><%=UFNome(cUf)%></b>.</p> 
+<p>A partir deste ponto, estÃ£o disponÃ­veis as consultas relacionadas ao 
+municÃ­pio de <b><%=Capital(cMunic)%></b>, no Estado <b><%=UFNome(cUf)%></b>.</p> 
 <p>&nbsp;</p>
-<p><input type="button" value="Propostas e Convênios" onclick="javascript:Propostas()"></p>
+<p><input type="button" value="Propostas e ConvÃªnios" onclick="javascript:Propostas()"></p>
 <p>
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 &nbsp;&nbsp;&nbsp;
-<input type="button" value="Retornar ao Início" onclick="javascript:Home()">
+<input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()">
 </p>
 <p><span id="_SHOWHELP">
 <input type="button" value="Ajuda" onclick="javascript:ShowHelp();">
@@ -81,14 +81,14 @@ município de <b><%=Capital(cMunic)%></b>, no Estado <b><%=UFNome(cUf)%></b>.</p>
 <div id="_HELP" style="display: none">
 <hr>
 <h3>Ajuda</h3>
-<p>Na consulta de <b>Propostas e Convênios</b>, você têm acesso a uma lista de órgãos 
-do Governo para os quais foram feitas propostas de uso de verba da União dos Estados
-para este município, e a partir de um órgao escolhido, acessar as propostas e convênios
-firmados para o órgão em questão com mais detalhes.</p>
+<p>Na consulta de <b>Propostas e ConvÃªnios</b>, vocÃª tÃªm acesso a uma lista de Ã³rgÃ£os 
+do Governo para os quais foram feitas propostas de uso de verba da UniÃ£o dos Estados
+para este municÃ­pio, e a partir de um Ã³rgao escolhido, acessar as propostas e convÃªnios
+firmados para o Ã³rgÃ£o em questÃ£o com mais detalhes.</p>
 <p>Na consulta de <b>Conveniados</b>, partimos de uma lista de endidades particulares 
-de prestação de serviços do município, que participaram de convênios para o município, 
-e ao escolher uma endidade, podemos visualizar o resumo de todos os convênios que
-ela participou, acessando os detalhes de cada convêmio.</p>
+de prestaÃ§Ã£o de serviÃ§os do municÃ­pio, que participaram de convÃªnios para o municÃ­pio, 
+e ao escolher uma endidade, podemos visualizar o resumo de todos os convÃªnios que
+ela participou, acessando os detalhes de cada convÃªmio.</p>
 <hr>
 </div>
 <p>

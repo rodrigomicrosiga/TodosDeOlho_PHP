@@ -1,4 +1,4 @@
-<%
+ï»¿<%
 Local nI,nJ
 %>
 
@@ -81,24 +81,24 @@ function HideHelp()
 <?php require_once('ptitle.php'); ?>
 </td></tr>
 <tr><td colspan="5">
-<h3><%=Capital(cMunic)%> / <%=cUF%> - Propostas e Convênios</h3>
+<h3><%=Capital(cMunic)%> / <%=cUF%> - Propostas e ConvÃªnios</h3>
 </td></tr>
 <tr><td colspan="5">
 <div id="_HELP" style="display: none">
 <hr>
 <h3>Ajuda</h3>
-<p>Esta consulta mostra uma lista das propostas realizadas e convênios firmados com o município, 
-separados por Órgão Concedente do Governo, ordenados pelos maiores valores conveniados.</p>
-<p>A primeira coluna da tabela mostra um link com o nome do órgão, basta clicar sobre  
-ele para consultar as propostas ou convênios relacionadas ao órgão em questão. A tabela 
-possui as seguintes informações:</p>
+<p>Esta consulta mostra uma lista das propostas realizadas e convÃªnios firmados com o municÃ­pio, 
+separados por Ã“rgÃ£o Concedente do Governo, ordenados pelos maiores valores conveniados.</p>
+<p>A primeira coluna da tabela mostra um link com o nome do Ã³rgÃ£o, basta clicar sobre  
+ele para consultar as propostas ou convÃªnios relacionadas ao Ã³rgÃ£o em questÃ£o. A tabela 
+possui as seguintes informaÃ§Ãµes:</p>
 <p>
 <ul> 
-<li><b>Órgão Concedente:</b> Nome do órgão ou ministério responsável por conceder o benefício / repasse.</li>
-<li><b>Propostas:</b> Quantidade de propostas realizadas e registradas para este concedente no sistema de convênios.</li>
-<li><b>Valor Proposto:</b> Soma do valor global de todas as propostas do órgão em questão.</li>
-<li><b>Convênios firmados:</b> Corresponde ao número de propostas que se tornaram convênios.</li>
-<li><b>Valor Conveniado:</b> Soma do valor global de repasse de todos os convênios firmados para o órgão em questão.</li>
+<li><b>Ã“rgÃ£o Concedente:</b> Nome do Ã³rgÃ£o ou ministÃ©rio responsÃ¡vel por conceder o benefÃ­cio / repasse.</li>
+<li><b>Propostas:</b> Quantidade de propostas realizadas e registradas para este concedente no sistema de convÃªnios.</li>
+<li><b>Valor Proposto:</b> Soma do valor global de todas as propostas do Ã³rgÃ£o em questÃ£o.</li>
+<li><b>ConvÃªnios firmados:</b> Corresponde ao nÃºmero de propostas que se tornaram convÃªnios.</li>
+<li><b>Valor Conveniado:</b> Soma do valor global de repasse de todos os convÃªnios firmados para o Ã³rgÃ£o em questÃ£o.</li>
 </ul>
 </p>
 <hr>
@@ -115,10 +115,10 @@ possui as seguintes informações:</p>
 <input type="button" value="Voltar" onclick="javascript:Voltar()"></p>
 <td></tr>
 <tr>
-<th stype="max-width: 100%;">Órgão Concedente</th>
+<th stype="max-width: 100%;">Ã“rgÃ£o Concedente</th>
 <th>Propostas<br>Enviadas</th>
 <th>Valor das<br>Propostas</th>
-<th>Propostas<br>Aprovadas<br>(Convênios)</th>
+<th>Propostas<br>Aprovadas<br>(ConvÃªnios)</th>
 <th>Valor do<br>Investimento</th>
 </tr>
 <% For nI := 1 to len(aData)%>
@@ -143,7 +143,7 @@ possui as seguintes informações:</p>
 <p>    
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 &nbsp;&nbsp;&nbsp;
-<input type="button" value="Retornar ao Início" onclick="javascript:Home()">
+<input type="button" value="Retornar ao InÃ­cio" onclick="javascript:Home()">
 </p>
 </td></tr>
 </table>
