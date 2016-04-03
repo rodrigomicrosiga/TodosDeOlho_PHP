@@ -1,6 +1,12 @@
 use conveniomysql;
 
-CREATE TABLE IF NOT EXISTS CONVENIOS (
+select 'Dropando tabela de Convenios por Programa' AS '';
+
+DROP TABLE IF EXISTS CONVENIOS;
+
+select 'Criando tabela de Convenios por Programa' AS '';
+
+CREATE TABLE CONVENIOS (
 ANO_CONVENIO			int(4) 		NOT NULL,
 NR_CONVENIO			int(5)		NOT NULL,
 ANO_PROPOSTA			int(4)		NOT NULL,
@@ -67,9 +73,4 @@ TX_QUALIFIC_PROPONENTE		varchar(32)		NOT NULL,
 ID_CONVENIO			int(6)		NOT NULL,
 ID_PROP				int(7)		NOT NULL,
 ID_PROP_PROGRAMA		int(6) 		NOT NULL );
-
--- Create Index CONVENIOS1 ON CONVENIOS ( ID_PROP );
--- Create Index CONVENIOS2 ON CONVENIOS ( ID_CONVENIO );
--- Create Index CONVENIOS3 ON CONVENIOS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
--- Create Index CONVENIOS4 ON CONVENIOS ( ID_MUNICIPIO_PROPONENTE );
 

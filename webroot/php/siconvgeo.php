@@ -65,7 +65,7 @@ $conn = MySQLConnect();
 
 $cQuery = 	'select CODIGO,NOME,UF,' .
 			' abs ( LATITUDE - ? ) + abs ( LONGITUDE - ? ) as DIF '.
-			' from MUNICIP MUN ' .
+			' from MUNICIPIOS MUN ' .
 			' where (abs ( LATITUDE - ? )  + abs ( LONGITUDE - ? )) < 0.2 ' . 
 			' order by 4';
 

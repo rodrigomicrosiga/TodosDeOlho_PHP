@@ -1,9 +1,19 @@
 use conveniomysql;
 
-CREATE TABLE IF NOT EXISTS ORGAO (
+select 'Dropando tabela de Orgãos' AS '';
+
+DROP TABLE IF EXISTS ORGAO;
+
+select 'Criando tabela de Orgãos' AS '';
+
+CREATE TABLE ORGAO (
    ID int(5) NOT NULL ,
    IDSUP int(5) NOT NULL ,
    NOME varchar(70) NOT NULL );
+
+select 'Populando tabela de Orgãos' AS '';
+
+SET autocommit = 0;
 
 Insert into ORGAO (ID,IDSUP,NOME) values (14000,14000,'Justica Eleitoral');
 Insert into ORGAO (ID,IDSUP,NOME) values (14105,14000,'Tribunal Regional Eleitoral da Bahia');
@@ -159,5 +169,7 @@ Insert into ORGAO (ID,IDSUP,NOME) values (56000,56000,'Ministerio das Cidades');
 Insert into ORGAO (ID,IDSUP,NOME) values (56901,56000,'Fundo Nac. de Segur. e Educacao do Transito');
 Insert into ORGAO (ID,IDSUP,NOME) values (57000,57000,'Min.das Mulh., da Ig.racial e dos Dir.humanos');
 Insert into ORGAO (ID,IDSUP,NOME) values (58000,58000,'Ministério da Pesca e Aquicultura');
+
+commit;
 
 Create Index ORGAO1 ON ORGAO ( ID );

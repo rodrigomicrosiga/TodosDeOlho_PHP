@@ -1,6 +1,12 @@
 use conveniomysql;
 
-CREATE TABLE IF NOT EXISTS PROGRAMAS (
+select 'Dropando tabela de Programas' AS '';
+
+DROP TABLE IF EXISTS PROGRAMAS;
+
+select 'Criando tabela de Programas' AS '';
+
+CREATE TABLE PROGRAMAS (
 CD_PROGRAMA            varchar(13) NOT NULL ,
 NM_PROGRAMA            varchar(255) NOT NULL ,
 TX_ACAO_PPA            varchar(8) NOT NULL ,
@@ -30,6 +36,4 @@ IN_EMENDA_PARLAMENTAR  char(1) NOT NULL ,
 ID_PROGRAMA_CONVENIO   int(5) NOT NULL ,
 QT_PROPOSTA            int(6) NOT NULL ,
 QT_CONVENIO            int(6) NOT NULL );
-
--- Create Index PROGRAMA1 ON PROGRAMA ( CD_PROGRAMA );
 

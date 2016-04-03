@@ -124,7 +124,7 @@ ob_flush();
 
 $conn = MySQLConnect();
 
-$stmt = mysqli_prepare($conn, "Select CODIGO,NOME,UF from MUNICIP where UF = ? ORDER BY UF,NOME");
+$stmt = mysqli_prepare($conn, "Select CODIGO,NOME,UF from MUNICIPIOS where UF = ? ORDER BY UF,NOME");
 mysqli_stmt_bind_param($stmt,'s',$cUF);
 
 if (mysqli_stmt_execute ( $stmt ))

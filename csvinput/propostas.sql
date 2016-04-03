@@ -1,6 +1,12 @@
 use conveniomysql;
 
-CREATE TABLE IF NOT EXISTS PROPOSTAS (
+select 'Dropando tabela de Propostas por Programa' AS '';
+
+DROP TABLE IF EXISTS PROPOSTAS;
+
+select 'Criando tabela de Propostas por Programa' AS '';
+
+CREATE TABLE PROPOSTAS (
 ANO_PROPOSTA		int(4) 		NOT NULL ,
 NR_PROPOSTA		int(6) 		NOT NULL ,
 ANO_CONVENIO    	int(4) 		NOT NULL ,
@@ -44,10 +50,4 @@ TX_JUSTIFICATIVA	varchar(255)	NOT NULL ,
 ID_PROPOSTA		int(7)	NOT NULL ,
 ID_CONVENIO		int(6)	NOT NULL ,
 ID_PROP_PROGRAMA	int(6)	NOT NULL );
-
-
--- Create Index PROPOSTAS1 ON PROPOSTAS ( ID_PROPOSTA );
--- Create Index PROPOSTAS2 ON PROPOSTAS ( ID_MUNICIPIO_PROPONENTE );
--- Create Index PROPOSTAS3 ON PROPOSTAS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
-
 

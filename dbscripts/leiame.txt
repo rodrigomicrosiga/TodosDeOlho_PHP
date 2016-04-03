@@ -1,5 +1,0 @@
-Importação no MYSQL
--------------------
-
-
-mysql -u ubuntu -p < scriptname.sql

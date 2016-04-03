@@ -1,6 +1,12 @@
 use conveniomysql;
 
-CREATE TABLE IF NOT EXISTS PLANOAP (
+select 'Dropando tabela de Plano de Aplicação Detalhado' AS '';
+
+DROP TABLE IF EXISTS PLANOAP;
+
+select 'Criando tabela de Plano de Aplicação Detalhado' AS '';
+
+CREATE TABLE PLANOAP (
 TP_DESPESA		varchar(30)	NOT NULL,
 TX_NATUREZAAQUISICAO	varchar(30)	NOT NULL,
 TX_DESCRICAODESPESA	varchar(255)	NOT NULL,
@@ -15,7 +21,4 @@ ID_CONVENIO		int(6)	NOT NULL,
 ID_PROPOSTA		int(7)	NOT NULL
 );
 
-
--- Create Index PLANOAP1 ON PLANOAP ( ID_PROPOSTA );
--- Create Index PLANOAP2 ON PLANOAP ( ID_CONVENIO );
 

@@ -1,0 +1,17 @@
+https://portal.convenios.gov.br/downloads/01_ConveniosProgramas.csv
+https://portal.convenios.gov.br/downloads/03_Empenhos.csv
+https://portal.convenios.gov.br/downloads/04_ExecucaoFinanceira.csv
+https://portal.convenios.gov.br/downloads/05_PropostasPrograma.csv
+https://portal.convenios.gov.br/downloads/07_PropostasDadosBancarios.csv
+https://portal.convenios.gov.br/downloads/08_PropostasDadosResponsaveis.csv
+https://portal.convenios.gov.br/downloads/09_PropostasDadosProponente.csv
+https://portal.convenios.gov.br/downloads/10_PropostasEmendaParlamentar.csv
+https://portal.convenios.gov.br/downloads/11_PropostasBenefEspecifico.csv
+https://portal.convenios.gov.br/downloads/14_Programas.csv
+https://portal.convenios.gov.br/downloads/15_ProgramasUFHabilitadas.csv
+https://portal.convenios.gov.br/downloads/16_Documento_Liquidacao.csv
+https://portal.convenios.gov.br/downloads/17_Pagamento_OBTV.csv
+https://portal.convenios.gov.br/downloads/18_Discriminacao_OBTV.csv
+https://portal.convenios.gov.br/downloads/19_CronogramaFisicoPT.csv
+https://portal.convenios.gov.br/downloads/20_CronogramaDesembolsoPT.csv
+https://portal.convenios.gov.br/downloads/21_PlanoAplicacaoPT.csv
