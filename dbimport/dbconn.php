@@ -4,8 +4,8 @@ function MySQLConnect()
 {
 	// Database Connection Info ( MYSQL ) 
 	$servername = "localhost";
-	$username = "root";
-	$password = "123@manager";
+	$username = "ubuntu";
+	$password = "avelinos";
 
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password , 'conveniomysql');

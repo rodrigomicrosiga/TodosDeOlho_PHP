@@ -11,40 +11,6 @@ function DTOS( $sDate )
 	return sprintf("%d-%d-%d",$myDate[2],$myDate[1],$myDate[0]);
 }
 
-function ShowData( $data )
-{
-	
-	echo $data[0] . " [CD_PROGRAMA]\n";
-	echo $data[1] . " [NM_PROGRAMA]\n";
-	echo $data[2] . " [TX_ACAO_PPA]\n";
-	echo $data[3] . " [TX_DESCRICAO_PROGRAMA]\n";
-	echo $data[4] . " [TX_SITUACAO_PROGRAMA]\n";
-	echo $data[5] . " [CD_ORG_SUPERIOR]\n";
-	echo $data[7] . " [CD_ORG_CONCEDENTE]\n";
-	echo $data[9] . " [DT_DISPONIBILIZACAO]\n";
-	echo $data[10] . " [ANO_DISPONIBILIZACAO]\n";
-	echo $data[11] . " [MES_DISPONIBILIZACAO]\n";
-	echo $data[12] . " [DT_INC_VIGENCIA]\n";
-	echo $data[13] . " [ANO_INC_VIGENCIA]\n";
-	echo $data[14] . " [MES_INC_VIGENCIA]\n";
-	echo $data[15] . " [DT_FIM_VIGENCIA]\n";
-	echo $data[16] . " [ANO_FIM_VIGENCIA]\n";
-	echo $data[17] . " [MES_FIM_VIGENCIA]\n";
-	echo $data[18] . " [CD_MANDATARIA]\n";
-	echo $data[19] . " [NM_MANDATARIA]\n";
-	echo $data[20] . " [CD_EXECUTOR]\n";
-	echo $data[22] . " [IN_CRITERIO_SELECAO]\n";
-	echo $data[23] . " [IN_CHAMA_PUBLICO]\n";
-	echo $data[24] . " [IN_REQUER_BENS_SERV]\n";
-	echo $data[25] . " [IN_REQUER_CRONO_DESEMB]\n";
-	echo $data[26] . " [IN_ACEITA_PROP_SEM_CADASTRO]\n";
-	echo $data[27] . " [IN_REQUER_PLANO_TRABALHO]\n";
-	echo $data[28] . " [IN_EMENDA_PARLAMENTAR]\n";
-	echo $data[29] . " [ID_PROGRAMA_CONVENIO]\n";
-	echo $data[30] . " [QT_PROPOSTA			]\n";
-	echo $data[31] . " [QT_CONVENIO]\n";
-
-}
 
 $row = 0;
 
@@ -61,7 +27,7 @@ if (($handle = fopen("14_Programas.csv", "r")) !== FALSE) {
 
 	mysqli_real_query ( $conn , "SET autocommit = 0;" );
 
-	while (($data = fgetcsv($handle, 8192, ";" , "\"")) !== FALSE) {
+	while (($data = fgetcsv($handle, 8192, ';' , '"' , '"'  )) !== FALSE) {
         $row++;
 		if ( $row == 1)
 			continue;
@@ -69,11 +35,6 @@ if (($handle = fopen("14_Programas.csv", "r")) !== FALSE) {
 		if ( $num != 32)
 			die("Numero de Colunas inesperado (" . $num . ") na linha (" . $row . ")" );
 
-		// --- Conversoes -----
-		// VErificar se meu DB está CP1252 ou UTF-8
-		
-		//$data[1] = iconv("UTF-8","CP1252//IGNORE",$data[1]);
-		//$data[3] = iconv("UTF-8","CP1252//IGNORE",$data[3]);
 		$data[9] = DTOS($data[9]);
         $data[12] = DTOS($data[12]);
         $data[15] = DTOS($data[15]);
