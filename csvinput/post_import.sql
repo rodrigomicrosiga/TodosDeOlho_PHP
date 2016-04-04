@@ -46,10 +46,6 @@ select 'Criando Índices de Empenhos' AS '';
 Create Index EMPENHOS1 ON EMPENHOS ( ID_PROP , DT_EMISSAO_EMPENHO );
 Create Index EMPENHOS2 ON EMPENHOS ( ID_CONVENIO , DT_EMISSAO_EMPENHO );
 
-select 'Criando Índices de xecução Financeira' AS '';
-Create Index EXECUCAOFIN1 ON EXECUCAOFIN ( ID_PROP , DT_DESEMBOLSO );
-Create Index EXECUCAOFIN2 ON EXECUCAOFIN ( ID_CONVENIO , DT_DESEMBOLSO ) ;
-
 select 'Criando Índices de Pagamentos OBTV' AS '';
 Create Index PAGAMENTO_O1 ON PAGAMENTO_OBTV( ID_CONVENIO );
 Create Index PAGAMENTO_O2 ON PAGAMENTO_OBTV( ID_DOCLIQUIDACAO );

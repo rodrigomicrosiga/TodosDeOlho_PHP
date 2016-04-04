@@ -4,6 +4,5 @@ do
   php "$file" 
 done
 echo Criando Indices e amarrando informacoes
-mysql -u root -p < post_import.sql
+mysql -u ubuntu -p avelinos < post_import.sql
 echo Importacao de CSV terminada
-
