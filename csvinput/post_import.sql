@@ -1,16 +1,20 @@
 use conveniomysql;
 
-select 'Criando Índices de Convenios' AS '';
-
-Create Index CONVENIOS1 ON CONVENIOS ( ID_PROP );
-Create Index CONVENIOS2 ON CONVENIOS ( ID_CONVENIO );
-Create Index CONVENIOS3 ON CONVENIOS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
-
 select 'Atualizando Código de Municípios nos Convênios' AS '';
 
 update  CONVENIOS c, MUNICIPIOS m set c.ID_MUNICIPIO_PROPONENTE = m.CODIGO 
 	where c.UF_PROPONENTE = m.UF and c.NM_MUNICIPIO_PROPONENTE = m.NOME ;
 
+select 'Atualizando Código de Municípios nas Propostas' AS '';
+update  PROPOSTAS p, MUNICIPIOS m set p.ID_MUNICIPIO_PROPONENTE = m.CODIGO 
+	where p.UF_PROPONENTE = m.UF and p.NM_MUNICIPIO_PROPONENTE = m.NOME ;
+
+
+select 'Criando Índices de Convenios' AS '';
+
+Create Index CONVENIOS1 ON CONVENIOS ( ID_PROP );
+Create Index CONVENIOS2 ON CONVENIOS ( ID_CONVENIO );
+Create Index CONVENIOS3 ON CONVENIOS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
 Create Index CONVENIOS4 ON CONVENIOS ( ID_MUNICIPIO_PROPONENTE , DT_INCLUSAO_PROPOSTA );
 
 select 'Criando Índices de Cronograma de Desembolao' AS '';
@@ -24,11 +28,6 @@ Create index CRONOFRAMA_F2 ON CRONOGRAMA_FISICO( ID_PROPOSTA,DT_INICIO );
 select 'Criando Índices de Propostas' AS '';
 Create Index PROPOSTAS1 ON PROPOSTAS ( ID_PROPOSTA );
 Create Index PROPOSTAS2 ON PROPOSTAS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
-
-select 'Atualizando Código de Municípios nas Propostas' AS '';
-update  PROPOSTAS p, MUNICIPIOS m set p.ID_MUNICIPIO_PROPONENTE = m.CODIGO 
-	where p.UF_PROPONENTE = m.UF and p.NM_MUNICIPIO_PROPONENTE = m.NOME ;
-
 Create Index PROPOSTAS3 ON PROPOSTAS ( ID_MUNICIPIO_PROPONENTE , DT_PROPOSTA );
 
 select 'Criando Índices de Execução Financeita' AS '';
