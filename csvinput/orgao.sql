@@ -171,5 +171,7 @@ Insert into ORGAO (ID,IDSUP,NOME) values (57000,57000,'Min.das Mulh., da Ig.raci
 Insert into ORGAO (ID,IDSUP,NOME) values (58000,58000,'Ministério da Pesca e Aquicultura');
 
 commit;
+set autocommit = 1;
+
 
 Create Index ORGAO1 ON ORGAO ( ID );

@@ -1,7 +1,5 @@
 use conveniomysql;
 
-set autocommit = 1;
-
 select 'Criando Índices de Convenios' AS '';
 
 Create Index CONVENIOS1 ON CONVENIOS ( ID_PROP );
@@ -41,8 +39,8 @@ select 'Criando Índices de Discriminação OBTV' AS '';
 Create Index DISCRIMINACAO_O1 on DISCRIMINACAO_OBTV( ID_CONVENIO , DT_EMISSAO );
 
 select 'Criando Índices de Documento de Liquidação' AS '';
-Create Index DOCUMENTO_L1 on DOCUMENTO_LIQUIDACAO( ID_CONVENIO , DT_EMISSAO_DL )
-Create Index DOCUMENTO_L2 on DOCUMENTO_LIQUIDACAO( ID_DOCLIQUIDACAO , DT_EMISSAO_DL )
+Create Index DOCUMENTO_L1 on DOCUMENTO_LIQUIDACAO(ID_CONVENIO,DT_EMISSAO_DL);
+Create Index DOCUMENTO_L2 on DOCUMENTO_LIQUIDACAO(ID_DOCLIQUIDACAO,DT_EMISSAO_DL);
 
 select 'Criando Índices de Empenhos' AS '';
 Create Index EMPENHOS1 ON EMPENHOS ( ID_PROP , DT_EMISSAO_EMPENHO );
