@@ -22,6 +22,8 @@ function VAL2FLOAT( $cVal )
 
 $row = 0;
 
+echo "Importando arquivo [07_PropostasDadosBancarios.csv]\n";
+
 if (($handle = fopen("07_PropostasDadosBancarios.csv", "r")) !== FALSE) {
 
 	$starttime = microtime(true);

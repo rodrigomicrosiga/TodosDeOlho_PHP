@@ -14,6 +14,8 @@ function DTOS( $sDate )
 
 $row = 0;
 
+echo "Importando arquivo [14_Programas.csv]\n";
+
 if (($handle = fopen("14_Programas.csv", "r")) !== FALSE) {
 
 	$starttime = microtime(true);
