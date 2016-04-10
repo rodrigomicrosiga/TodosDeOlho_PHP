@@ -1,11 +1,97 @@
-﻿<%
-Local nI,nJ
-Local nRows := 0
-%>
-
-<html lang="pt-BR">
+﻿<html lang="pt-BR">
 <head>
-<?php require_once('headmetas.php'); ?>
+<?php 
+require_once('headmetas.php');
+require_once('dbconn.php'); 
+
+ob_start();
+
+$cIDMun = filter_input(INPUT_GET, 'MUN');
+
+if ( is_null($cIDMun) ) 
+{
+	$cErrorMSG = "Município não informado.";
+	$cErrorHLP = 'A busca por propostas e convênios não recebeu corretamente o município a ser pesquisado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+    require 'sicerror.php';
+	return;	
+}
+
+$cCodCCD = filter_input(INPUT_GET, 'CCD');
+
+if (  is_null($cCodCCD) ) 
+{
+	$cErrorMSG = "òrgão não informado.";
+	$cErrorHLP = 'A busca por propostas e convênios não recebeu corretamente o órgão concedente a ser pesquisado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+    require 'sicerror.php';
+	return;	
+}
+
+$conn = MySQLConnect();
+
+$stmt = mysqli_prepare($conn, "Select CODIGO,NOME,UF from MUNICIPIOS where CODIGO = ?");
+mysqli_stmt_bind_param($stmt,'s',$cIDMun);
+
+if ( mysqli_stmt_execute ( $stmt ) )
+{
+	mysqli_stmt_bind_result ( $stmt , $dbCODIGO , $dbNOME , $dbUF );
+	if (mysqli_stmt_fetch($stmt))
+    {
+		$cMunic = ucfirst(mb_convert_case($dbNOME,MB_CASE_LOWER));
+		$cUF = $dbUF;
+    }
+	else
+	{
+		$cErrorMSG = "Município não encontrado.";
+		$cErrorHLP = 'A busca pelo código do município não identificou o município informado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+		require 'sicerror.php';
+		return;	
+	}
+
+	mysqli_stmt_close($stmt);
+	
+	$stmt = NULL;
+}
+
+$stmt = mysqli_prepare($conn, "select NOME from orgao where ID = ?");
+mysqli_stmt_bind_param($stmt,'i',$cCodCCD);
+
+if ( mysqli_stmt_execute ( $stmt ) )
+{
+	mysqli_stmt_bind_result ( $stmt , $dbNOMECCD );
+	if (mysqli_stmt_fetch($stmt))
+    {
+		$cOrgaoCCD = ucfirst(mb_convert_case($dbNOMECCD,MB_CASE_LOWER));
+    }
+	else
+	{
+		$cErrorMSG = "Órgão não encontrado.";
+		$cErrorHLP = 'A busca pelo código não identificou o órgão concedente informado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+		require 'sicerror.php';
+		return;	
+	}
+
+	mysqli_stmt_close($stmt);
+	
+	$stmt = NULL;
+}
+
+// Numero da pagina de pesquisa'	
+$nPage = filter_input(INPUT_GET, 'PAGE');
+if (  is_null($nPage) ) 
+	$nPage = 1;
+
+// ordem de visualização de dados
+$cOrd = filter_input(INPUT_GET, 'ORD');
+if (  is_null($cOrd) ) 
+	$cOrd = 'D';
+
+$nPageSize = 10;
+
+?>
 <style>
 input, textarea {
   max-width:100%;
@@ -59,11 +145,11 @@ function Proposta(cCod)
 }
 function Convenio(cCod)
 {
-	window.open("/php/siconv05.php?IDCNV="+cCod,"_self");
+	window.open("/php/siconv05.php?IDCONV="+cCod,"_self");
 }
 function Voltar()
 {
-	window.open("/php/siconv02.php?MUN=<%=cIDMun%>","_self");
+	window.open("/php/siconv02.php?MUN=<?php echo $cIDMun?>","_self");
 }
 function Home()
 {
@@ -71,7 +157,7 @@ function Home()
 }
 function Pagina(nPage,cOrdem)
 {
-	window.open("/php/siconv03.php?MUN=<%=cIDMun%>&CCD=<%=cCodCCD%>&PAGE="+nPage+"&ORD="+cOrdem,"_self");
+	window.open("/php/siconv03.php?MUN=<?php echo $cIDMun?>&CCD=<?php echo $cCodCCD?>&PAGE="+nPage+"&ORD="+cOrdem,"_self");
 }
 function ShowHelp()
 {
@@ -95,12 +181,12 @@ function HideHelp()
 </head>
 <body onload="javascript:HideHelp()">
 <?php require_once('ptitle.php'); ?>
-<h3><%=Capital(cMunic)%> / <%=cUF%><br><%=Capital(cOrgaoCCD)%><br>( Página <%=cValToChar(nPage)%> )</h3>
+<h3><?php echo $cMunic ?> / <?php echo $cUF ?><br><?php echo $cOrgaoCCD?><br>( Página <?php echo $nPage ?> )</h3>
 
 <div id="_HELP" style="display: none">
 <hr>
 <p>Esta consulta mostra as propostas e convênios realizados para o município em questão, 
-mostrando apenas as informações relacionadas a <b><%=Capital(cOrgaoCCD)%></b>. Para obter maiores 
+mostrando apenas as informações relacionadas a <b><?php $cOrgaoCCD ?></b>. Para obter maiores 
 detalhes sobre cada Proposta ou Convênio celebrado, basta clicar no botão de Consulta 
 correspondente.</p>
 <p id="phelp">Após escolher um órgão para consultar, serão apresentadas todas as propostas e convênios firmados com o órgão 
@@ -165,94 +251,129 @@ identificadores visuais para as situações e andamento das propostas e convêni
 </span>
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 </p>
-<p>
+<?php 
+echo '<p>';
+If ($cOrd == 'V')
+	echo '<input type="button" value="Ordenar por Data" onclick="javascript:Pagina('.$nPage.',\'D\')";">';
+else
+	echo '<input type="button" value="Ordenar por Valor" onclick="javascript:Pagina('.$nPage.',\'V\')";">';
+echo '</p>';
 
-<% If cOrd == 'V' %>
-<input type="button" value="Ordenar por Data" onclick="javascript:Pagina(<%=cValToChar(nPage)%>,'D')";">
-<% Else %>
-<input type="button" value="Ordenar por Valor" onclick="javascript:Pagina(<%=cValToChar(nPage)%>,'V')";">
-<% Endif %>
-</p>
+If ( $nPage > 1 )
+{
+	echo '<p>';
+	echo '<input type="button" value="Página Anterior" onclick="javascript:Pagina(' . ($nPage-1) .',\''.$cOrd.'\');">';
+	echo '</p>';
+}
 
+ob_flush();
 
-<% If nPage > 1 %>
-<p>
-<input type="button" value="Página Anterior" onclick="javascript:Pagina(<%=cValToChar(nPage-1)%>,'<%=cOrd%>')">
-</p>
-<% endif %>
+// Agora sim busca pelas propostas e convenios do municipio
 
-<table>
-<% 
-While !eof() 
-   nRows++
-%>
-<tr><td colspan="4">
-<% IF !empty(QRY->IDCNV) %>
-<input id="normalbutton" type="button" value="Consultar Convênio <%=QRY->IDCNV%>" onclick="javascript:Convenio('<%=QRY->IDCNV%>')">
-<% else %>
-<input id="normalbutton" type="button" value="Consultar Proposta <%=QRY->IDPRO%>" onclick="javascript:Proposta('<%=QRY->IDPRO%>')">
-<% Endif %>                     
-&nbsp;
-<% If ("CANCELADO"$QRY->TXSIT)%>
-<img src="/images/logocancel.png" title="Cancelado">&nbsp;
-<% Endif %>
-<% If ("APROVADO"$QRY->TXSIT)%>
-<img src="/images/logook.png" title="Aprovado">&nbsp;
-<% Endif %>
-<% If ("REJEITADO"$QRY->TXSIT)%>
-<img src="/images/logorejeitado.png" title="Rejeitado">&nbsp;
-<% Endif %>
-<% If ("ANÁLISE"$QRY->TXSIT)%>
-<img src="/images/logoanalize.png" title="Em Análise">&nbsp;
-<% Endif %>
-<% If ("EXECUÇÃO"$QRY->TXSIT)%>
-<img src="/images/logoemexec.png" title="Em Execução">&nbsp;
-<% Endif %>
-<% IF QRY->DTFIMVIG < date() /* Ampulheta - Proposta VENCIDA*/%>
-<img src="/images/redhourglass.png" title="Vigência da Proposta Expirada">&nbsp;
-<% Else %>
-<img src="/images/greenflag.png" title="Vigência da Proposta em Dia">&nbsp;
-<% Endif %>
-<% If QRY->INPARECERG == 'S' %>
-<img title="Parecer do Administrador" src="/images/logoadm.png">&nbsp;
-<% endif %>
-<% If QRY->INPARECERJ == 'S' %>
-<img title="Parecer Jurídico" src="/images/logojur.png">&nbsp;
-<% endif %>
-<% If QRY->INPARECERT == 'S' %>
-<img title="Parecer Técnico" src="/images/logotec.png">&nbsp;
-<% endif %>
-</td></tr>
-<tr>
-<td>Data da proposta</td>
-<td id="tdgray"><%=dtoc(QRY->DTPRO)%></td>
-<td>Valor Global</td>
-<td id="tdgray">R$ <%=Transform(QRY->VL_GLOBAL,"@E 999,999,999,999.99")%></td>
-</tr>
-<% IF !empty(QRY->TXSIT) %>
-<tr>
-<td>Situação Atual</td>
-<td id="tdgray" colspan="3"><%=Capital(alltrim(QRY->TXSIT))%></td>
-</tr> 
-<% Endif %>
-<tr>
-<td>Proponente</td>
-<td id="tdgray" colspan="3"><%=QRY->CDIDPPN%> - <%=Capital(alltrim(QRY->NMPPN))%></td>
-</tr>
-<tr>
-<td>Objeto da Proposta</td>
-<td id="tdgray" colspan="3"><%=Capital(alltrim(QRY->TXOBJETOCN))%></td>
-</tr>
-<tr><td colspan="4">&nbsp;</td></tr>
-<% DbSkip() %>
-<% Enddo %>
-</table>
-<% If nPage > 1 %>
-<p><input type="button" value="Página Anterior" onclick="javascript:Pagina(<%=cValToChar(nPage-1)%>,'<%=cOrd%>')"></p>
-<% endif %>
-<% If nRows >= nPageSize %>
-<p><input type="button" value="Mais resultados" onclick="javascript:Pagina(<%=cValToChar(nPage+1)%>,'<%=cOrd%>')"></p>
-<% endif %>
+If ( $cOrd == 'D' )
+{
+	// Data de proposta
+	$cOrderBy = 'DT_PROPOSTA desc';
+}
+Else If ( $cOrd == 'V' )
+{
+	// Valor Gobal
+	$cOrderBy = 'VL_GLOBAL desc';
+}
+Else
+{
+	// QQer outra coisa, vai data mesmo
+	$cOrderBy = 'DT_PROPOSTA desc';
+}
+
+require_once('dbpagequery.php');
+	
+// Monga uma Query para paginação de dados
+
+$cQuery = U_PageQry(
+		"ID_CONVENIO,".
+		"ID_PROPOSTA,".
+		"TX_SITUACAO,".
+		"DATE_FORMAT(DT_PROPOSTA,'%d/%m/%Y') as DT_PROPOSTA,".
+		"DATE_FORMAT(DT_FIM_VIGENCIA,'%d/%m/%Y') as DT_FIM_VIGENCIA,".
+		"IN_PARECER_GESTOR_SN,".
+		"IN_PARECER_JURIDICO_SN,".
+		"IN_PARECER_TECNICO_SN,".
+		"VL_GLOBAL,".
+		"CD_IDENTIF_PROPONENTE,".
+		"NM_PROPONENTE,".
+		"TX_OBJETO_CONVENIO", 
+	"propostas", 
+	"ID_MUNICIPIO_PROPONENTE = $cIDMun and CD_ORGAO_CONCEDENTE = $cCodCCD",
+	$cOrderBy,
+	$nPage,
+	$nPageSize);
+
+$stmt = mysqli_prepare($conn, $cQuery);
+
+if ( $stmt === false )
+{
+	die('MySQL Error: ' . mysqli_error($conn));
+}
+
+if ( mysqli_stmt_execute ( $stmt ) )
+{
+	echo "<table>";
+
+	$nRows = 0;
+	$result = mysqli_stmt_get_result($stmt);
+	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+	{
+		$nRows++;
+		echo '<tr><td colspan="2">';
+		if ( $row['ID_CONVENIO'] > 0 )
+		{
+			echo '<input id="normalbutton" type="button" value="Consultar Convênio ' . $row['ID_CONVENIO'] . '" ' . 
+				 'onclick="javascript:Convenio(\'' . $row['ID_CONVENIO'] . '\')">';
+		}
+		else
+		{
+			echo '<input id="normalbutton" type="button" value="Consultar Proposta ' . $row['ID_PROPOSTA'] . '" ' . 
+				 'onclick="javascript:Proposta(\'' . $row['ID_PROPOSTA'] . '\')">';
+		}
+			
+		echo '</tr>';
+
+		$nCol = 0;
+		foreach( $row as $rKey => $rValue)
+		{
+			$nCol++;
+			if ( $nCol <= 2)
+				continue;
+			echo '<tr>';
+			echo '<td>'.$rKey.'</td>';
+			if ( substr($rKey,0,3) === 'VL_' )
+				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
+			else if ( substr($rKey,0,3) === 'NM_' )
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+			else if ( substr($rKey,0,3) === 'TX_' )
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+			else
+				echo '<td>'.$rValue.'</td>';
+			echo '</tr>';
+		}
+		echo '<tr><td colspan="2">&nbsp;</td></tr>';
+	}
+
+	echo "</table>";
+}
+else
+{
+	echo "DEU MERDA<br>";
+}
+
+ob_flush();
+
+If ( $nPage > 1 )
+	echo '<p><input type="button" value="Página Anterior" onclick="javascript:Pagina('. ($nPage-1) . ',\'' . $cOrd. '\')"></p>';
+If ( $nRows >= $nPageSize )
+	echo '<p><input type="button" value="Mais resultados" onclick="javascript:Pagina('. ($nPage+1) . ',\'' . $cOrd. '\')"></p>;';
+?>
 <p>
 <input type="button" value="Voltar" onclick="javascript:Voltar()">
 &nbsp;&nbsp;&nbsp;
@@ -264,9 +385,6 @@ While !eof()
 <script>
 </script>
 </html>
-
-
-
-
-
-
+<?php 
+ob_end_flush(); 
+?>

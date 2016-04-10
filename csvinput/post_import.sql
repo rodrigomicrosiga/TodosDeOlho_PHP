@@ -15,7 +15,8 @@ select 'Criando Índices de Convenios' AS 'Aguarde';
 Create Index CONVENIOS1 ON CONVENIOS ( ID_PROP );
 Create Index CONVENIOS2 ON CONVENIOS ( ID_CONVENIO );
 Create Index CONVENIOS3 ON CONVENIOS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
-Create Index CONVENIOS4 ON CONVENIOS ( ID_MUNICIPIO_PROPONENTE , DT_INCLUSAO_PROPOSTA );
+create index CONVENIOS4 on CONVENIOS ( ID_MUNICIPIO_PROPONENTE , CD_ORGAO_CONCEDENTE, NM_ORGAO_CONCEDENTE, VL_GLOBAL) ;
+
 
 select 'Criando Índices de Cronograma de Desembolao' AS 'Aguarde';
 Create index CRONOGRAMA_D1 ON CRONOGRAMA_DESEMBOLSO( ID_CONVENIO,TX_ANO,TX_MES );
@@ -28,7 +29,8 @@ Create index CRONOFRAMA_F2 ON CRONOGRAMA_FISICO( ID_PROPOSTA,DT_INICIO );
 select 'Criando Índices de Propostas' AS 'Aguarde';
 Create Index PROPOSTAS1 ON PROPOSTAS ( ID_PROPOSTA );
 Create Index PROPOSTAS2 ON PROPOSTAS ( UF_PROPONENTE , NM_MUNICIPIO_PROPONENTE );
-Create Index PROPOSTAS3 ON PROPOSTAS ( ID_MUNICIPIO_PROPONENTE , DT_PROPOSTA );
+create index PROPOSTAS3 on PROPOSTAS ( ID_MUNICIPIO_PROPONENTE , CD_ORGAO_CONCEDENTE, NM_ORGAO_CONCEDENTE, VL_GLOBAL) ;
+
 
 select 'Criando Índices de Execução Financeita' AS 'Aguarde';
 Create Index EXECUCAOFIN1 ON EXECUCAOFIN ( ID_CONVENIO , DT_DESEMBOLSO );
@@ -74,4 +76,13 @@ select 'Criando Índices de Emendas das Propostas' AS 'Aguarde';
 Create Index PROPOSTAS_EMENDA1 on PROPOSTAS_EMENDAP (ID_PROPOSTA);
 Create Index PROPOSTAS_EMENDA2 on PROPOSTAS_EMENDAP (ID_CONVENIO);
 Create Index PROPOSTAS_EMENDA3 on PROPOSTAS_EMENDAP (ID_PROP_PROGRAMA);
+
+select 'Criando Índices de Proponentes' AS 'Aguarde';
+Create Index PROPOSTAS_PROP1 on propostas_proponente (ID_PROPOSTA);
+Create Index PROPOSTAS_PROP2 on propostas_proponente (ID_CONVENIO);
+
+select 'Criando Índices de Responsaveis' AS 'Aguarde';
+Create Index PROPOSTAS_RESP1 on propostas_responsaveis (ID_PROPOSTA);
+Create Index PROPOSTAS_RESP2 on propostas_responsaveis (ID_CONVENIO);
+
 
