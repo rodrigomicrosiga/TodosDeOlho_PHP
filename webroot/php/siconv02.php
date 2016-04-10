@@ -1,10 +1,50 @@
-﻿<%
-Local nI,nJ
-%>
-
-<html lang="pt-BR">
+﻿<html lang="pt-BR">
 <head>
-<?php require_once('headmetas.php'); ?>
+<?php 
+require_once('headmetas.php'); 
+require_once('dbconn.php'); 
+
+ob_start();
+
+$cMunID = filter_input(INPUT_GET, 'MUN');
+
+if (  is_null($cMunID) ) 
+{
+	$cErrorMSG = "Município não informado.";
+	$cErrorHLP = 'A busca por propostas e convênios não recebeu corretamente o município a ser pesquisado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+    require 'sicerror.php';
+	return;	
+}
+
+$conn = MySQLConnect();
+
+$stmt = mysqli_prepare($conn, "Select CODIGO,NOME,UF from MUNICIPIOS where CODIGO = ?");
+mysqli_stmt_bind_param($stmt,'s',$cMunID);
+
+if ( mysqli_stmt_execute ( $stmt ) )
+{
+	mysqli_stmt_bind_result ( $stmt , $dbCODIGO , $dbNOME , $dbUF );
+	if (mysqli_stmt_fetch($stmt))
+    {
+		$cMunicipio = ucfirst(mb_convert_case($dbNOME,MB_CASE_LOWER));
+		$cUF = $dbUF;
+    }
+	else
+	{
+		$cErrorMSG = "Município não encontrado.";
+		$cErrorHLP = 'A busca pelo código do município não identificou o município informado. ' . 
+					'Retorne para a tela anterior e tente novamente, ou volte ao início do site.' ;
+		require 'sicerror.php';
+		return;	
+	}
+
+	mysqli_stmt_close($stmt);
+	
+	$stmt = NULL;
+}
+
+?>
 <style>
 input, textarea {
   max-width: 100%;
@@ -42,14 +82,15 @@ select, input {
     font-size: 130%;
 }
 </style>
+
 <script type = 'text/javascript'>
 function Propostas(cCod)
 {
-	window.open("/php/siconv03.php?MUN=<%=cMunID%>&CCD="+cCod+"&PAGE=1&ORD=D","_self");
+	window.open("/php/siconv03.php?MUN=<?php echo $cMunID ?>&CCD="+cCod+"&PAGE=1&ORD=D","_self");
 }
 function Voltar()
 {
-	window.open("/php/siconvmun.php?UF=<%=cUf%>","_self");
+	window.open("/php/siconvmun.php?UF=<?php echo $cUF?>","_self");
 }
 function Home()
 {
@@ -81,7 +122,7 @@ function HideHelp()
 <?php require_once('ptitle.php'); ?>
 </td></tr>
 <tr><td colspan="5">
-<h3><%=Capital(cMunic)%> / <%=cUF%> - Propostas e Convênios</h3>
+<h3><?php echo $cMunicipio ?> / <?php echo $cUF ?> - Propostas e Convênios</h3>
 </td></tr>
 <tr><td colspan="5">
 <div id="_HELP" style="display: none">
@@ -121,19 +162,109 @@ possui as seguintes informações:</p>
 <th>Propostas<br>Aprovadas<br>(Convênios)</th>
 <th>Valor do<br>Investimento</th>
 </tr>
-<% For nI := 1 to len(aData)%>
-<tr>
-<td <%=IIf(Ni%2==0,' id="tdodd"','')%>>
-<a href="javascript:Propostas('<%=aData[nI][1]%>')">
-<%=Capital(alltrim(aData[nI][2]))%>
-</a>
-</td>
-<td <%=IIf(Ni%2==0,' id="tdodd"','')%>><%=cValToChar(aData[nI][3])%></td>
-<td <%=IIf(Ni%2==0,' id="tdodd"','')%>><%=alltrim(str(aData[nI][4],8,2))%> mi</td>
-<td <%=IIf(Ni%2==0,' id="tdodd"','')%>><%=cValToChar(aData[nI][5])%></td>
-<td <%=IIf(Ni%2==0,' id="tdodd"','')%>><%=alltrim(str(aData[nI][6],8,2))%> mi</td>
-</tr>
-<% Next %>
+<?php 
+
+ob_flush();
+
+$cQuery = "select CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE , ";
+$cQuery = $cQuery . "round(sum(VL_GLOBAL)/1000000,2) AS GLOBAL, ";
+$cQuery = $cQuery . "count(*) as QTD from propostas ";
+$cQuery = $cQuery . "where ID_MUNICIPIO_PROPONENTE = ? ";
+$cQuery = $cQuery . "group by CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE ";
+$cQuery = $cQuery . "order by 3 desc";
+
+$stmt = mysqli_prepare($conn, $cQuery);
+mysqli_stmt_bind_param($stmt,'s',$cMunID);
+
+$aResumo = array();
+
+if ( mysqli_stmt_execute ( $stmt ) )
+{
+	mysqli_stmt_bind_result ( $stmt , $dbIdOrgao, $dbNomeOrgao , $dbVlGlobal , $dbQuantidade );
+
+	while (mysqli_stmt_fetch($stmt))
+	{
+		$aOrgao[] = $dbIdOrgao;
+		$aResumo[] = array($dbIdOrgao , $dbNomeOrgao , $dbVlGlobal ,  $dbQuantidade , 0 , 0 );
+	}
+
+	mysqli_stmt_close($stmt);
+	
+	$stmt = NULL;
+}
+
+$cQuery = "select CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE , ";
+$cQuery = $cQuery . "round(sum(VL_GLOBAL)/1000000,2) AS GLOBAL, ";
+$cQuery = $cQuery . "count(*) as QTD from convenios ";
+$cQuery = $cQuery . "where ID_MUNICIPIO_PROPONENTE = ? ";
+$cQuery = $cQuery . "group by CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE ";
+$cQuery = $cQuery . "order by 3 desc";
+
+$stmt = mysqli_prepare($conn, $cQuery);
+mysqli_stmt_bind_param($stmt,'s',$cMunID);
+ 
+echo "<hr>";
+
+if ( mysqli_stmt_execute ( $stmt ) )
+{
+	mysqli_stmt_bind_result ( $stmt , $dbIdOrgao , $dbNomeOrgao , $dbVlGlobal , $dbQuantidade );
+
+	while (mysqli_stmt_fetch($stmt))
+	{
+		$nPos = array_search ( $dbIdOrgao , array_column($aResumo,0) );
+		$aResumo[$nPos][4] += $dbVlGlobal ;
+		$aResumo[$nPos][5] += $dbQuantidade ;
+	}
+
+	mysqli_stmt_close($stmt);
+	
+	$stmt = NULL;
+}
+
+function cmp_sort($a, $b)
+{
+    if ($a[4] == $b[4]) {
+        return 0;
+    }
+    return ($a[4] > $b[4]) ? -1 : 1;
+}
+
+usort($aResumo, "cmp_sort");
+
+for ( $nI = 0 ; $nI < count($aResumo) ; $nI++)
+{
+	echo '<tr>';
+
+	echo '<td' . ( $nI % 2 == 0 ? ' id="tdodd"' : '' ) . '>';
+	echo '<a href="javascript:Propostas(' . "'" . $aResumo[$nI][0] . "'" . ');"' . '>';
+	echo ucfirst(mb_convert_case($aResumo[$nI][1],MB_CASE_LOWER));
+	echo '</a>';
+	echo '</td>';
+
+	echo '<td' . ( $nI % 2 == 0 ? ' id="tdodd"' : '' ) . '>';
+	echo $aResumo[$nI][3];
+	echo '</td>';
+
+	echo '<td' . ( $nI % 2 == 0 ? ' id="tdodd"' : '' ) . '>';
+	echo $aResumo[$nI][2] === 0  ? '---' : $aResumo[$nI][2] . ' mi';
+	echo '</td>';
+
+	echo '<td' . ( $nI % 2 == 0 ? ' id="tdodd"' : '' ) . '>';
+	echo $aResumo[$nI][5] === 0  ? '---' : $aResumo[$nI][5] ;
+	echo '</td>';
+
+	echo '<td' . ( $nI % 2 == 0 ? ' id="tdodd"' : '' ) . '>';
+	echo $aResumo[$nI][4] === 0  ? '---' : $aResumo[$nI][4] . ' mi ';
+	echo '</td>';
+
+	echo '</tr>';
+}
+
+ob_flush();
+
+?>
+
+
 <tr><td colspan="5">
 &nbsp;
 </td></tr>
@@ -153,3 +284,6 @@ possui as seguintes informações:</p>
 <script>
 </script>
 </html>
+<?php 
+ob_end_flush(); 
+?>

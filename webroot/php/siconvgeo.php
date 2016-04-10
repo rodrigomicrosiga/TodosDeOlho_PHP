@@ -94,7 +94,9 @@ if (mysqli_stmt_execute ( $stmt ))
 
 }
 
+mysqli_stmt_close($stmt);
 MySQLDisconnect( $conn );
+
 ?>
 
 <p><input type="button" value="Voltar" onclick="javascript:Voltar()"></p>

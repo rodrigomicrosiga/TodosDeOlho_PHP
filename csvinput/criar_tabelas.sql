@@ -1,7 +1,8 @@
-use conveniomysql;
+﻿use conveniomysql;
 
 select 'Executando Script de Criação de Tabelas' AS '';
 
+source logsite.sql
 source convenios.sql
 source cronograma_desembolso.sql
 source cronograma_fisico.sql

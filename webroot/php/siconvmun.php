@@ -135,7 +135,10 @@ if (mysqli_stmt_execute ( $stmt ))
 		echo '<option value="' . $dbCODIGO . '">' . $dbNOME . '</option>\n';
     }
 }
+
+mysqli_stmt_close($stmt);
 MySQLDisconnect( $conn );
+
 ob_flush();
 ?>
 </select>

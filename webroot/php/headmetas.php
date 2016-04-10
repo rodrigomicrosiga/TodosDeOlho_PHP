@@ -1,4 +1,8 @@
-﻿<meta charset="UTF-8">
+﻿<?php 
+session_start();
+require_once('logsite.php');
+?>
+<meta charset="UTF-8">
 <meta content="text/html">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <meta name="format-detection" content="telephone=no"/>
