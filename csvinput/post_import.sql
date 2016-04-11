@@ -78,11 +78,11 @@ Create Index PROPOSTAS_EMENDA2 on PROPOSTAS_EMENDAP (ID_CONVENIO);
 Create Index PROPOSTAS_EMENDA3 on PROPOSTAS_EMENDAP (ID_PROP_PROGRAMA);
 
 select 'Criando Índices de Proponentes' AS 'Aguarde';
-Create Index PROPOSTAS_PROP1 on propostas_proponente (ID_PROPOSTA);
-Create Index PROPOSTAS_PROP2 on propostas_proponente (ID_CONVENIO);
+Create Index PROPOSTAS_PROP1 on PROPOSTAS_PROPONENTE (ID_PROPOSTA);
+Create Index PROPOSTAS_PROP2 on PROPOSTAS_PROPONENTE (ID_CONVENIO);
 
 select 'Criando Índices de Responsaveis' AS 'Aguarde';
-Create Index PROPOSTAS_RESP1 on propostas_responsaveis (ID_PROPOSTA);
-Create Index PROPOSTAS_RESP2 on propostas_responsaveis (ID_CONVENIO);
+Create Index PROPOSTAS_RESP1 on PROPOSTAS_RESPONSAVEIS (ID_PROPOSTA);
+Create Index PROPOSTAS_RESP2 on PROPOSTAS_RESPONSAVEIS (ID_CONVENIO);
 
 

@@ -168,7 +168,7 @@ ob_flush();
 
 $cQuery = "select CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE , ";
 $cQuery = $cQuery . "round(sum(VL_GLOBAL)/1000000,2) AS GLOBAL, ";
-$cQuery = $cQuery . "count(*) as QTD from propostas ";
+$cQuery = $cQuery . "count(*) as QTD from PROPOSTAS ";
 $cQuery = $cQuery . "where ID_MUNICIPIO_PROPONENTE = ? ";
 $cQuery = $cQuery . "group by CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE ";
 $cQuery = $cQuery . "order by 3 desc";
@@ -195,7 +195,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 
 $cQuery = "select CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE , ";
 $cQuery = $cQuery . "round(sum(VL_GLOBAL)/1000000,2) AS GLOBAL, ";
-$cQuery = $cQuery . "count(*) as QTD from convenios ";
+$cQuery = $cQuery . "count(*) as QTD from CONVENIOS ";
 $cQuery = $cQuery . "where ID_MUNICIPIO_PROPONENTE = ? ";
 $cQuery = $cQuery . "group by CD_ORGAO_CONCEDENTE , NM_ORGAO_CONCEDENTE ";
 $cQuery = $cQuery . "order by 3 desc";

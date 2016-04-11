@@ -55,7 +55,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 	$stmt = NULL;
 }
 
-$stmt = mysqli_prepare($conn, "select NOME from orgao where ID = ?");
+$stmt = mysqli_prepare($conn, "select NOME from ORGAO where ID = ?");
 mysqli_stmt_bind_param($stmt,'i',$cCodCCD);
 
 if ( mysqli_stmt_execute ( $stmt ) )

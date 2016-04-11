@@ -110,7 +110,7 @@ Dados do Convênio <?php echo $cIDConv; ?>
 $conn = MySQLConnect();
 
 // ===================================================================================
-$stmt = mysqli_prepare($conn, "Select * from convenios where ID_CONVENIO = ?");
+$stmt = mysqli_prepare($conn, "Select * from CONVENIOS where ID_CONVENIO = ?");
 mysqli_stmt_bind_param($stmt,'i',$cIDConv);
 
 if ( mysqli_stmt_execute ( $stmt ) )
@@ -334,7 +334,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 }
 
 // ===================================================================================
-$stmt = mysqli_prepare($conn, "Select * from propostas_bancos where ID_CONVENIO = ?");
+$stmt = mysqli_prepare($conn, "Select * from PROPOSTAS_BANCOS where ID_CONVENIO = ?");
 mysqli_stmt_bind_param($stmt,'i',$cIDConv);
 
 if ( mysqli_stmt_execute ( $stmt ) )
@@ -373,7 +373,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 }
 
 // ===================================================================================
-$stmt = mysqli_prepare($conn, "Select * from propostas_benefespecif where ID_CONVENIO = ?");
+$stmt = mysqli_prepare($conn, "Select * from PROPOSTAS_BENEFESPECIF where ID_CONVENIO = ?");
 mysqli_stmt_bind_param($stmt,'i',$cIDConv);
 
 if ( mysqli_stmt_execute ( $stmt ) )
@@ -410,7 +410,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 }
 
 // ===================================================================================
-$stmt = mysqli_prepare($conn, "Select * from propostas_emendap where ID_CONVENIO = ?");
+$stmt = mysqli_prepare($conn, "Select * from PROPOSTAS_EMENDAP where ID_CONVENIO = ?");
 mysqli_stmt_bind_param($stmt,'i',$cIDConv);
 
 if ( mysqli_stmt_execute ( $stmt ) )
@@ -448,7 +448,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 
 
 // ===================================================================================
-$stmt = mysqli_prepare($conn, "Select * from propostas_proponente where ID_CONVENIO = ?");
+$stmt = mysqli_prepare($conn, "Select * from PROPOSTAS_PROPONENTE where ID_CONVENIO = ?");
 mysqli_stmt_bind_param($stmt,'i',$cIDConv);
 
 if ( mysqli_stmt_execute ( $stmt ) )
@@ -485,7 +485,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 }
 
 // ===================================================================================
-$stmt = mysqli_prepare($conn, "Select * from propostas_responsaveis where ID_CONVENIO = ?");
+$stmt = mysqli_prepare($conn, "Select * from PROPOSTAS_RESPONSAVEIS where ID_CONVENIO = ?");
 mysqli_stmt_bind_param($stmt,'i',$cIDConv);
 
 if ( mysqli_stmt_execute ( $stmt ) )
