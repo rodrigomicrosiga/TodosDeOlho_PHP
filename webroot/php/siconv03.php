@@ -38,7 +38,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 	mysqli_stmt_bind_result ( $stmt , $dbCODIGO , $dbNOME , $dbUF );
 	if (mysqli_stmt_fetch($stmt))
     {
-		$cMunic = ucfirst(mb_convert_case($dbNOME,MB_CASE_LOWER));
+		$cMunic = ucfirst(mb_convert_case($dbNOME,MB_CASE_LOWER,"UTF-8"));
 		$cUF = $dbUF;
     }
 	else
@@ -63,7 +63,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 	mysqli_stmt_bind_result ( $stmt , $dbNOMECCD );
 	if (mysqli_stmt_fetch($stmt))
     {
-		$cOrgaoCCD = ucfirst(mb_convert_case($dbNOMECCD,MB_CASE_LOWER));
+		$cOrgaoCCD = ucfirst(mb_convert_case($dbNOMECCD,MB_CASE_LOWER,"UTF-8"));
     }
 	else
 	{
@@ -350,9 +350,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';

@@ -129,9 +129,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -169,9 +169,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -206,9 +206,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -243,9 +243,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -280,9 +280,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -317,9 +317,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -354,9 +354,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -393,9 +393,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -430,9 +430,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -468,9 +468,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
@@ -505,9 +505,9 @@ if ( mysqli_stmt_execute ( $stmt ) )
 			if ( substr($rKey,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
 			else if ( substr($rKey,0,3) === 'NM_' )
-				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else if ( substr($rKey,0,3) === 'TX_' )
-				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER)) .'</td>';
+				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';

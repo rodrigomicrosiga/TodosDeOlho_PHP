@@ -27,7 +27,7 @@ if ( mysqli_stmt_execute ( $stmt ) )
 	mysqli_stmt_bind_result ( $stmt , $dbCODIGO , $dbNOME , $dbUF );
 	if (mysqli_stmt_fetch($stmt))
     {
-		$cMunicipio = ucfirst(mb_convert_case($dbNOME,MB_CASE_LOWER));
+		$cMunicipio = ucfirst(mb_convert_case($dbNOME,MB_CASE_LOWER,"UTF-8"));
 		$cUF = $dbUF;
     }
 	else
@@ -237,7 +237,7 @@ for ( $nI = 0 ; $nI < count($aResumo) ; $nI++)
 
 	echo '<td' . ( $nI % 2 == 0 ? ' id="tdodd"' : '' ) . '>';
 	echo '<a href="javascript:Propostas(' . "'" . $aResumo[$nI][0] . "'" . ');"' . '>';
-	echo ucfirst(mb_convert_case($aResumo[$nI][1],MB_CASE_LOWER));
+	echo ucfirst(mb_convert_case($aResumo[$nI][1],MB_CASE_LOWER,"UTF-8"));
 	echo '</a>';
 	echo '</td>';
 
