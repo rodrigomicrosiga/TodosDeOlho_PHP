@@ -303,7 +303,7 @@ $cQuery = U_PageQry(
 		"CD_IDENTIF_PROPONENTE,".
 		"NM_PROPONENTE,".
 		"TX_OBJETO_CONVENIO", 
-	"propostas", 
+	"PROPOSTAS", 
 	"ID_MUNICIPIO_PROPONENTE = $cIDMun and CD_ORGAO_CONCEDENTE = $cCodCCD",
 	$cOrderBy,
 	$nPage,
