@@ -287,15 +287,28 @@ Else
 }
 
 require_once('dbpagequery.php');
-	
-// Monga uma Query para paginação de dados
+
+// Define titulo das colunas para mostrar no Browse
+
+$aColTitles = [
+	"TX_SITUACAO" => "Situação",
+	"DT_PROPOSTA_" => "Proposta",
+	"DT_FIM_VIGENCIA_" => "Vigente até",
+	"VL_GLOBAL" => "Valor Global",
+	"NM_PROPONENTE" => "Proponente",
+	"TX_OBJETO_CONVENIO" => "Finalidade"
+];
+
+
+
+// Monta uma Query para paginação de dados
 
 $cQuery = U_PageQry(
 		"ID_CONVENIO,".
 		"ID_PROPOSTA,".
 		"TX_SITUACAO,".
-		"DATE_FORMAT(DT_PROPOSTA,'%d/%m/%Y') as DT_PROPOSTA,".
-		"DATE_FORMAT(DT_FIM_VIGENCIA,'%d/%m/%Y') as DT_FIM_VIGENCIA,".
+		"DATE_FORMAT(DT_PROPOSTA,'%d/%m/%Y') as DT_PROPOSTA_,".
+		"DATE_FORMAT(DT_FIM_VIGENCIA,'%d/%m/%Y') as DT_FIM_VIGENCIA_,".
 		"IN_PARECER_GESTOR_SN,".
 		"IN_PARECER_JURIDICO_SN,".
 		"IN_PARECER_TECNICO_SN,".
@@ -304,7 +317,7 @@ $cQuery = U_PageQry(
 		"NM_PROPONENTE,".
 		"TX_OBJETO_CONVENIO", 
 	"PROPOSTAS", 
-	"ID_MUNICIPIO_PROPONENTE = $cIDMun and CD_ORGAO_CONCEDENTE = $cCodCCD",
+	"ID_MUNICIPIO_PROPONENTE = " . $cIDMun . " and CD_ORGAO_CONCEDENTE = " . $cCodCCD,
 	$cOrderBy,
 	$nPage,
 	$nPageSize);
@@ -337,26 +350,59 @@ if ( mysqli_stmt_execute ( $stmt ) )
 				 'onclick="javascript:Proposta(\'' . $row['ID_PROPOSTA'] . '\')">';
 		}
 			
+		echo '&nbsp;';
+		if (stripos ( $row['TX_SITUACAO'] ,"CANCELADO"  ) !== false )
+			echo '<img src="/images/LogoCancel.png" title="Cancelado">&nbsp;';
+
+		if (stripos ( $row['TX_SITUACAO'] , "APROVADO"  ) !== false )
+			echo '<img src="/images/LogoOK.png" title="Aprovado">&nbsp;';
+
+		if (stripos ( $row['TX_SITUACAO'] , "REJEITADO" ) !== false )
+			echo '<img src="/images/LogoRejeitado.png" title="Rejeitado">&nbsp;';
+
+		if (stripos ( $row['TX_SITUACAO'] , "EM AN" ) !== false )
+			echo '<img src="/images/LogoAnalize.png" title="Em Análise">&nbsp;';
+
+		if (stripos ( $row['TX_SITUACAO'] , "EXECU" ) !== false )
+			echo '<img src="/images/LogoEmExec.png" title="Em Execução">&nbsp;';
+
+		/*
+<img src="/images/RedHourGlass.png" title="Vigência da Proposta Expirada">&nbsp;
+<img src="/images/GreenFlag.png" title="Vigência da Proposta em Dia">&nbsp;
+		*/
+		
+		if ($row['IN_PARECER_GESTOR_SN']  == 'S' )
+			echo '<img title="Parecer do Administrador" src="/images/LogoAdm.png">&nbsp;';
+
+		if ($row['IN_PARECER_JURIDICO_SN']  == 'S' )
+			echo '<img title="Parecer Jurídico" src="/images/LogoJur.png">&nbsp;';
+
+		if ($row['IN_PARECER_TECNICO_SN']  == 'S' )
+			echo '<img title="Parecer Técnico" src="/images/LogoTec.png">&nbsp;';
+			
+			
 		echo '</tr>';
 
 		$nCol = 0;
-		foreach( $row as $rKey => $rValue)
+		foreach( $aColTitles as $rCampo => $rDescr)
 		{
 			$nCol++;
-			if ( $nCol <= 2)
-				continue;
 			echo '<tr>';
-			echo '<td>'.$rKey.'</td>';
-			if ( substr($rKey,0,3) === 'VL_' )
+			echo '<td>'.$rDescr.'</td>';
+				
+			$rValue = $row[$rCampo];
+			
+			if ( substr($rCampo,0,3) === 'VL_' )
 				echo '<td> R$ ' . number_format ( $rValue , 2 , ',' , '.') .'</td>';
-			else if ( substr($rKey,0,3) === 'NM_' )
+			else if ( substr($rCampo,0,3) === 'NM_' )
 				echo '<td>'. ucwords(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
-			else if ( substr($rKey,0,3) === 'TX_' )
+			else if ( substr($rCampo,0,3) === 'TX_' )
 				echo '<td>'. ucfirst(mb_convert_case($rValue,MB_CASE_LOWER,"UTF-8")) .'</td>';
 			else
 				echo '<td>'.$rValue.'</td>';
 			echo '</tr>';
-		}
+
+			}
 		echo '<tr><td colspan="2">&nbsp;</td></tr>';
 	}
 
